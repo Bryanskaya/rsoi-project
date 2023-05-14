@@ -1,7 +1,7 @@
 version: "3"
 services:
   postgres:
-    image: library/postgres:15
+    image: library/postgres:13
     container_name: postgres
     restart: on-failure
     environment:
@@ -9,10 +9,41 @@ services:
       POSTGRES_PASSWORD: "postgres"
       POSTGRES_DB: postgres
     volumes:
-      - db-data:/var/lib/postgresql/data
+      - db-data:/var/lib/postgresql/data2
       - ./postgres/:/docker-entrypoint-initdb.d/
     ports:
-      - "5432:5432"
+      - "5433:5432"
+      
+  reservationapp:
+    build:
+      context: ReservationApp
+    depends_on:
+      - postgres
+    ports:
+      - "8070:8070"
+  paymentapp:
+    build:
+      context: PaymentApp
+    depends_on:
+      - postgres
+    ports:
+      - "8060:8060"
+  loyaltyapp:
+    build:
+      context: LoyaltyApp
+    depends_on:
+      - postgres
+    ports:
+      - "8050:8050"
+  gateway:
+    build:
+      context: Gateway
+    ports:
+      - "8080:8080"
+    depends_on:
+      - reservationapp
+      - paymentapp
+      - loyaltyapp
 
   zookeeper:
     image: confluentinc/cp-zookeeper:7.3.2
@@ -39,8 +70,6 @@ services:
       KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
     depends_on:
       - zookeeper
-
-# TODO добавить сервисы
 
 volumes:
   db-data:

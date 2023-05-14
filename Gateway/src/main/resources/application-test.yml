@@ -1,0 +1,25 @@
+host:
+  service:
+    hotel: "reservationapp"
+    loyalty: "loyaltyapp"
+    payment: "paymentapp"
+
+path:
+  service:
+    hotel: "api/v1/hotels"
+    loyalty: "api/v1/loyalty"
+    reservation: "api/v1/reservations"
+    payment: "api/v1/payments"
+
+port:
+  service:
+    hotel: "8070"
+    loyalty: "8050"
+    payment: "8060"
+
+const:
+  jwt:
+    token:
+      prefix: "Bearer "
+    modulus: "qir1qoEh1hztZJZnnx-h_ifv1eZFx8Hzw9DWBH_YhRqM2IlkT2GS7SgPs_jTw7Ux7n773JNdBStmlMKY8vhTrCWPEeRSRulAg8cNLEmBQZF2ptLvR8dflVj33AQf2b9u930PmL-z00ZkfD04i4hGO6pJSLIh8G_pYPhe-lsALwxb-KBfTYNXbB7frZ5DueISPeC622Q-vM52YyKxOuJafRkHp4MgDzmonvyOgGBH-Rpk6tHya1KK9t9m9ByytcV-rVPMSEf4xr6CAuKK-sydoxwjgZlhvAwmH4KEprkK6_jk-owerCyVKqHEXD9iVcrSKh5wFt7w_zEY15i-Xp5oCQ"
+    exponent: "AQAB"
