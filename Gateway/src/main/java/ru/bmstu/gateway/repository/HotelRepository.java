@@ -2,10 +2,7 @@ package ru.bmstu.gateway.repository;
 
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.stereotype.Repository;
 import ru.bmstu.gateway.controller.exception.service.GatewayErrorException;
 import ru.bmstu.gateway.controller.exception.service.HotelServiceNotAvailableException;
@@ -29,7 +26,7 @@ public class HotelRepository extends BaseRepository {
                         .build())
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .retrieve()
-                .onStatus(HttpStatus::isError, error -> {
+                .onStatus(HttpStatusCode::isError, error -> {
                     throw new HotelServiceNotAvailableException(error.statusCode());
                 })
                 .toEntity(PaginationResponse.class)
@@ -49,7 +46,7 @@ public class HotelRepository extends BaseRepository {
                         .build(hotelId))
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .retrieve()
-                .onStatus(HttpStatus::isError, error -> {
+                .onStatus(HttpStatusCode::isError, error -> {
                     throw new HotelServiceNotAvailableException(error.statusCode());
                 })
                 .bodyToMono(HotelResponse.class)
@@ -69,7 +66,7 @@ public class HotelRepository extends BaseRepository {
                         .build(hotelUid))
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .retrieve()
-                .onStatus(HttpStatus::isError, error -> {
+                .onStatus(HttpStatusCode::isError, error -> {
                     throw new HotelServiceNotAvailableException(error.statusCode());
                 })
                 .bodyToMono(HotelResponse.class)
@@ -89,7 +86,7 @@ public class HotelRepository extends BaseRepository {
                         .build(hotelUid))
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .retrieve()
-                .onStatus(HttpStatus::isError, error -> {
+                .onStatus(HttpStatusCode::isError, error -> {
                     throw new HotelServiceNotAvailableException(error.statusCode());
                 })
                 .bodyToMono(Integer.class)

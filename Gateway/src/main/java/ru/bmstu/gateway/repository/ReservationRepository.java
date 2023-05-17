@@ -3,6 +3,7 @@ package ru.bmstu.gateway.repository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Repository;
 import ru.bmstu.gateway.controller.exception.service.GatewayErrorException;
@@ -26,7 +27,7 @@ public class ReservationRepository extends BaseRepository{
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .header("Authorization", bearerToken)
                 .retrieve()
-                .onStatus(HttpStatus::isError, error -> {
+                .onStatus(HttpStatusCode::isError, error -> {
                     throw new ReservationServiceNotAvailableException(error.statusCode());
                 })
                 .bodyToMono(ReservationDTO[].class)
@@ -47,7 +48,7 @@ public class ReservationRepository extends BaseRepository{
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .header("Authorization", bearerToken)
                 .retrieve()
-                .onStatus(HttpStatus::isError, error -> {
+                .onStatus(HttpStatusCode::isError, error -> {
                     throw new ReservationServiceNotAvailableException(error.statusCode());
                 })
                 .bodyToMono(ReservationDTO.class)
@@ -70,7 +71,7 @@ public class ReservationRepository extends BaseRepository{
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .header("Authorization", bearerToken)
                 .retrieve()
-                .onStatus(HttpStatus::isError, error -> {
+                .onStatus(HttpStatusCode::isError, error -> {
                     throw new ReservationServiceNotAvailableException(error.statusCode());
                 })
                 .bodyToMono(Integer.class)
@@ -91,7 +92,7 @@ public class ReservationRepository extends BaseRepository{
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .header("Authorization", bearerToken)
                 .retrieve()
-                .onStatus(HttpStatus::isError, error -> {
+                .onStatus(HttpStatusCode::isError, error -> {
                     throw new ReservationServiceNotAvailableException(error.statusCode());
                 })
                 .bodyToMono(Void.class)

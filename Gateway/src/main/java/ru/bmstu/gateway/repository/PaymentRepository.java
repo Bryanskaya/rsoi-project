@@ -4,6 +4,7 @@ package ru.bmstu.gateway.repository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.reactive.function.BodyInserters;
@@ -28,7 +29,7 @@ public class PaymentRepository extends BaseRepository {
                         .build(paymentUid))
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .retrieve()
-                .onStatus(HttpStatus::isError, error -> {
+                .onStatus(HttpStatusCode::isError, error -> {
                     throw new PaymentServiceNotAvailableException(error.statusCode());
                 })
                 .bodyToMono(PaymentInfo.class)
@@ -49,7 +50,7 @@ public class PaymentRepository extends BaseRepository {
                         .build())
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .retrieve()
-                .onStatus(HttpStatus::isError, error -> {
+                .onStatus(HttpStatusCode::isError, error -> {
                     throw new PaymentServiceNotAvailableException(error.statusCode());
                 })
                 .bodyToMono(PaymentDTO.class)
@@ -71,7 +72,7 @@ public class PaymentRepository extends BaseRepository {
                 .header("Authorization", bearerToken)
                 .body(BodyInserters.fromValue(reservationDTO))
                 .retrieve()
-                .onStatus(HttpStatus::isError, error -> {
+                .onStatus(HttpStatusCode::isError, error -> {
                     throw new PaymentServiceNotAvailableException(error.statusCode());
                 })
                 .bodyToMono(ReservationDTO.class)
@@ -91,7 +92,7 @@ public class PaymentRepository extends BaseRepository {
                         .build(paymentUid))
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .retrieve()
-                .onStatus(HttpStatus::isError, error -> {
+                .onStatus(HttpStatusCode::isError, error -> {
                     throw new PaymentServiceNotAvailableException(error.statusCode());
                 })
                 .bodyToMono(Void.class)
