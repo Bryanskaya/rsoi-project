@@ -35,6 +35,11 @@ services:
       - postgres
     ports:
       - "8050:8050"
+  identityprovider:
+    build:
+      context: IdentityProvider
+    ports:
+      - "8040:8040"
   gateway:
     build:
       context: Gateway
@@ -44,6 +49,7 @@ services:
       - reservationapp
       - paymentapp
       - loyaltyapp
+      - identityprovider
 
   zookeeper:
     image: confluentinc/cp-zookeeper:7.3.2

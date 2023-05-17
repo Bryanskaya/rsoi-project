@@ -10,9 +10,6 @@ const:
     group_id: "00g9jgb75nhes25aS5d7"
     auth_token: "SSWS 00yvsLjMGAcoM5HFKwD8ogOgomRvfNHDlD8hlylvsL"
 
-server:
-  port: 8081
-
 logging:
   level:
     reactor:
