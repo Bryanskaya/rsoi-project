@@ -1,8 +1,12 @@
+server:
+  port: 8080
+
 host:
   service:
     hotel: "reservationapp"
     loyalty: "loyaltyapp"
     payment: "paymentapp"
+    identityProvider: "identityprovider"
 
 path:
   service:
@@ -10,12 +14,14 @@ path:
     loyalty: "api/v1/loyalty"
     reservation: "api/v1/reservations"
     payment: "api/v1/payments"
+    identityProvider: "api/v1/identityprovider"
 
 port:
   service:
     hotel: "8070"
     loyalty: "8050"
     payment: "8060"
+    identityProvider: "8040"
 
 const:
   jwt:

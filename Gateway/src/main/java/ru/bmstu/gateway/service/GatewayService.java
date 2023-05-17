@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import ru.bmstu.gateway.controller.exception.data.token.UnauthorizedException;
@@ -34,6 +35,12 @@ public class GatewayService {
     private final ReservationRepository reservationRepository;
     private final PaymentRepository paymentRepository;
 
+    private final IdentityProviderRepository identityProviderRepository;
+
+
+    public HttpStatusCode register(RegisterRequest request) {
+        return identityProviderRepository.register(request);
+    }
 
     public ResponseEntity<?> getHotels(Integer page, Integer size) {
         return hotelRepository.getHotels(page, size);

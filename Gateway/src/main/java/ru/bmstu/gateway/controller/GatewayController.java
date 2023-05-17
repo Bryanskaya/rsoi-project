@@ -1,6 +1,7 @@
 package ru.bmstu.gateway.controller;
 
 
+import jakarta.websocket.server.PathParam;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,7 +12,6 @@ import ru.bmstu.gateway.dto.*;
 import ru.bmstu.gateway.service.GatewayService;
 import ru.bmstu.gateway.service.TokenService;
 
-import javax.websocket.server.PathParam;
 import java.util.UUID;
 
 @Slf4j
@@ -29,6 +29,13 @@ public class GatewayController {
 //        return ResponseEntity
 //                .ok("Hello, world!");
 //    }
+
+    @PostMapping(value = "/register")
+    public ResponseEntity register(@RequestBody RegisterRequest request) {
+        log.info(">>> GATEWAY: registration request was caught.");
+
+        return new ResponseEntity(gatewayService.register(request));
+    }
 
     @GetMapping(value = "/hotels", produces = "application/json")
     public ResponseEntity<?> getHotels(@RequestHeader(value = "Authorization", required = false) String bearerToken,

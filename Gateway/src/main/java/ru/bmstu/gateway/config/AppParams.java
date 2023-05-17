@@ -12,6 +12,9 @@ public class AppParams {
     @Value(value = "${host.service.payment:localhost}")
     public String hostPayment;
 
+    @Value(value = "${host.service.identityProvider}")
+    public String identityProvider;
+
     @Value(value = "${path.service.hotel}")
     public String pathHotel;
     @Value(value = "${path.service.loyalty}")
@@ -21,12 +24,18 @@ public class AppParams {
     @Value(value = "${path.service.payment}")
     public String pathPayment;
 
+    @Value(value = "${path.service.identityProvider}")
+    public String pathIdentityProvider;
+
     @Value(value = "${port.service.hotel}")
     public String portHotel;
     @Value(value = "${port.service.loyalty}")
     public String portLoyalty;
     @Value(value = "${port.service.payment}")
     public String portPayment;
+
+    @Value(value = "${port.service.identityProvider}")
+    public String portIdentityProvider;
 
     @Value(value = "${const.jwt.token.prefix}")
     public String jwtPrefix;
