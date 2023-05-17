@@ -1,0 +1,33 @@
+const:
+  okta:
+    scope: "openid"
+    grant_type: "password"
+    client_id: "0oa7ujznkyNadST0V5d7"
+    client_secret: "4yHab2OuzxisjrnL0At-paOBNTpoVzyjkKS51U1O"
+    url: "https://dev-21530061.okta.com/"
+    path_token: "oauth2/default/v1/token"
+    path_register: "api/v1/users/?activate=true"
+    group_id: "00g9jgb75nhes25aS5d7"
+    auth_token: "SSWS 00yvsLjMGAcoM5HFKwD8ogOgomRvfNHDlD8hlylvsL"
+
+server:
+  port: 8081
+
+logging:
+  level:
+    reactor:
+      netty:
+        http:
+          client: DEBUG
+    org:
+      springframework:
+        web:
+          reactive:
+            function:
+              client:
+                ExchangeFunctions: TRACE
+spring:
+  mvc:
+    log-request-details: true
+
+
