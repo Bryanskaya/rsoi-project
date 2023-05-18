@@ -7,7 +7,11 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.reactive.function.BodyInserters;
 import reactor.core.publisher.Mono;
+import ru.bmstu.gateway.controller.exception.service.GatewayErrorException;
+import ru.bmstu.gateway.controller.exception.service.IdentityProviderNotAvailableException;
+import ru.bmstu.gateway.dto.AuthRequest;
 import ru.bmstu.gateway.dto.RegisterRequest;
+import ru.bmstu.gateway.dto.TokenResponse;
 
 @Slf4j
 @Repository
@@ -24,6 +28,27 @@ public class IdentityProviderRepository extends BaseRepository {
                 .body(BodyInserters.fromValue(request))
                 .exchangeToMono(clientResponse ->
                         Mono.just(clientResponse.statusCode()))
+                .block();
+    }
+
+    public TokenResponse getToken(AuthRequest request) {
+        return webClient
+                .post()
+                .uri(uriBuilder -> uriBuilder
+                        .host(appParams.identityProvider)
+                        .path(appParams.pathIdentityProvider + "/authorize")
+                        .port(appParams.portIdentityProvider)
+                        .build())
+                .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                .body(BodyInserters.fromValue(request))
+                .retrieve()
+                .onStatus(HttpStatusCode::isError, error -> {
+                    throw new IdentityProviderNotAvailableException(error.statusCode());
+                })
+                .bodyToMono(TokenResponse.class).log()
+                .onErrorMap(Throwable.class, error -> {
+                    throw new GatewayErrorException(error.getMessage());
+                })
                 .block();
     }
 }

@@ -16,6 +16,7 @@ public class ControllerAdvisor {
             LoyaltyServiceNotAvailableException.class,
             PaymentServiceNotAvailableException.class,
             ReservationServiceNotAvailableException.class,
+            IdentityProviderNotAvailableException.class,
             UnauthorizedException.class,
             TokenExpiredException.class,
             JwtParsingException.class,

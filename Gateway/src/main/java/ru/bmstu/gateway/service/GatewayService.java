@@ -42,6 +42,10 @@ public class GatewayService {
         return identityProviderRepository.register(request);
     }
 
+    public TokenResponse getToken(AuthRequest request) {
+        return identityProviderRepository.getToken(request);
+    }
+
     public ResponseEntity<?> getHotels(Integer page, Integer size) {
         return hotelRepository.getHotels(page, size);
     }

@@ -37,6 +37,13 @@ public class GatewayController {
         return new ResponseEntity(gatewayService.register(request));
     }
 
+    @PostMapping(value = "/authorize")
+    public TokenResponse authorize(@RequestBody AuthRequest request) {
+        log.info(">>> GATEWAY: authorization request was caught.");
+
+        return gatewayService.getToken(request);
+    }
+
     @GetMapping(value = "/hotels", produces = "application/json")
     public ResponseEntity<?> getHotels(@RequestHeader(value = "Authorization", required = false) String bearerToken,
                                        @PathParam(value = "page") Integer page,
