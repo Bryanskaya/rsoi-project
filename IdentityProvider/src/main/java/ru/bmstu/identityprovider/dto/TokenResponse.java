@@ -12,5 +12,5 @@ import lombok.experimental.Accessors;
 @JsonIgnoreProperties
 public class TokenResponse {
     @JsonProperty(value = "access_token")
-    public String access_token;
+    public String accessToken;
 }
