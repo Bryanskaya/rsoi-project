@@ -8,10 +8,18 @@ repositories {
     mavenCentral()
 }
 
+val springCloudVersion = "2022.0.0"
+
 dependencies {
+    implementation(platform("org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"))
+
     implementation("org.springframework.boot:spring-boot-starter")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-webflux")
+
+    implementation("org.springframework.cloud:spring-cloud-stream-binder-kafka-streams")
+    implementation("org.springframework.cloud:spring-cloud-stream")
+    implementation("org.springframework.cloud:spring-cloud-starter-stream-kafka")
 
     implementation("io.jsonwebtoken:jjwt-api:0.11.5")
     implementation("javax.xml.bind:jaxb-api:2.3.1")
