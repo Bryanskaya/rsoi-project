@@ -40,6 +40,13 @@ services:
       context: IdentityProvider
     ports:
       - "8040:8040"
+  statisticsapp:
+    build:
+      context: StatisticsApp
+    depends_on:
+      - postgres
+    ports:
+      - "8090:8090"
   gateway:
     build:
       context: Gateway
@@ -50,6 +57,7 @@ services:
       - paymentapp
       - loyaltyapp
       - identityprovider
+      - statisticsapp
 
   zookeeper:
     image: confluentinc/cp-zookeeper:7.3.2

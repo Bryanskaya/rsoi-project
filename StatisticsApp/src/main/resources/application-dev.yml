@@ -1,0 +1,30 @@
+server:
+  port: 8081
+
+spring:
+  cloud:
+    function:
+      definition: consumer
+    stream:
+      kafka:
+        binder:
+          autoCreateTopics: true
+          brokers: localhost:29092
+      bindings:
+        consumer-in-0:
+          group: dev_statistics_consumer
+          destination: dev.rsoi.statistics.event
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/master.yaml
+  datasource:
+    url: jdbc:postgresql://localhost:5433/statistics
+    username: program
+    password: test
+
+logging:
+  level:
+    org:
+      springframework:
+        jdbc:
+          core: TRACE
