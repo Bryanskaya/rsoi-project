@@ -3,7 +3,7 @@ package ru.bmstu.gateway.dto;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import org.springframework.validation.annotation.Validated;
-import ru.bmstu.gateway.dto.enums.ReservationStatusEnum;
+import ru.bmstu.gateway.dto.enums.ReservationStatus;
 
 import java.sql.Date;
 import java.util.UUID;
@@ -16,6 +16,6 @@ public class ReservationDTO {
     private Integer hotelId;
     private Date startDate;
     private Date endDate;
-    private ReservationStatusEnum status;
+    private ReservationStatus status;
     private UUID paymentUid;
 }

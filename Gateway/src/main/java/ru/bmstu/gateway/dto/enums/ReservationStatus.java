@@ -1,13 +1,13 @@
 package ru.bmstu.gateway.dto.enums;
 
-public enum ReservationStatusEnum {
+public enum ReservationStatus {
     PAID("PAID"),
     REVERSED("REVERSED"),
     CANCELED("CANCELED");
 
     private String name;
 
-    ReservationStatusEnum(String name) {
+    ReservationStatus(String name) {
         this.name = name;
     }
 }
