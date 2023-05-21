@@ -13,7 +13,7 @@ public class AppParams {
     public String hostPayment;
 
     @Value(value = "${host.service.identityProvider}")
-    public String identityProvider;
+    public String hostIdentityProvider;
 
     @Value(value = "${path.service.hotel}")
     public String pathHotel;

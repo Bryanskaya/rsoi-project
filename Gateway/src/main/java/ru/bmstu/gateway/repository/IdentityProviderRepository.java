@@ -20,7 +20,7 @@ public class IdentityProviderRepository extends BaseRepository {
         return webClient
                 .post()
                 .uri(uriBuilder -> uriBuilder
-                        .host(appParams.identityProvider)
+                        .host(appParams.hostIdentityProvider)
                         .path(appParams.pathIdentityProvider + "/register")
                         .port(appParams.portIdentityProvider)
                         .build())
@@ -35,7 +35,7 @@ public class IdentityProviderRepository extends BaseRepository {
         return webClient
                 .post()
                 .uri(uriBuilder -> uriBuilder
-                        .host(appParams.identityProvider)
+                        .host(appParams.hostIdentityProvider)
                         .path(appParams.pathIdentityProvider + "/authorize")
                         .port(appParams.portIdentityProvider)
                         .build())
