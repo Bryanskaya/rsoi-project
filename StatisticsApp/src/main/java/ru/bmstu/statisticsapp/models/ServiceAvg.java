@@ -3,8 +3,6 @@ package ru.bmstu.statisticsapp.models;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.math.BigInteger;
-import java.sql.Timestamp;
-import java.time.Duration;
 
 public class ServiceAvg {
     @JsonProperty("service")
