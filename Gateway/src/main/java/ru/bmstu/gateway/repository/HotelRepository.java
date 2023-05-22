@@ -6,8 +6,8 @@ import org.springframework.http.*;
 import org.springframework.stereotype.Repository;
 import ru.bmstu.gateway.controller.exception.service.GatewayErrorException;
 import ru.bmstu.gateway.controller.exception.service.HotelServiceNotAvailableException;
-import ru.bmstu.gateway.dto.HotelResponse;
-import ru.bmstu.gateway.dto.PaginationResponse;
+import ru.bmstu.gateway.dto.response.HotelResponse;
+import ru.bmstu.gateway.dto.response.PaginationResponse;
 
 import java.util.UUID;
 

@@ -1,7 +1,7 @@
 package ru.bmstu.gateway.dto.converter;
 
 import ru.bmstu.gateway.dto.HotelInfo;
-import ru.bmstu.gateway.dto.HotelResponse;
+import ru.bmstu.gateway.dto.response.HotelResponse;
 
 public class HotelInfoConverter {
     public static HotelInfo fromHotelResponseToHotelInfo(HotelResponse hotelResponse) {

@@ -2,7 +2,6 @@ package ru.bmstu.gateway.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +15,10 @@ import ru.bmstu.gateway.dto.*;
 import ru.bmstu.gateway.dto.converter.HotelInfoConverter;
 import ru.bmstu.gateway.dto.converter.PaymentConverter;
 import ru.bmstu.gateway.dto.converter.ReservationConverter;
+import ru.bmstu.gateway.dto.request.AuthRequest;
+import ru.bmstu.gateway.dto.request.CreateReservationRequest;
+import ru.bmstu.gateway.dto.request.RegisterRequest;
+import ru.bmstu.gateway.dto.response.*;
 import ru.bmstu.gateway.dto.statistics.QueryServiceAvg;
 import ru.bmstu.gateway.dto.statistics.ServiceAvg;
 import ru.bmstu.gateway.repository.*;

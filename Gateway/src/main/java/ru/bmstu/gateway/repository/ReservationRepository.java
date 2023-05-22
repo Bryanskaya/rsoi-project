@@ -7,7 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Repository;
 import ru.bmstu.gateway.controller.exception.service.GatewayErrorException;
 import ru.bmstu.gateway.controller.exception.service.ReservationServiceNotAvailableException;
-import ru.bmstu.gateway.dto.CreateReservationRequest;
+import ru.bmstu.gateway.dto.request.CreateReservationRequest;
 import ru.bmstu.gateway.dto.ReservationDTO;
 
 import java.util.UUID;

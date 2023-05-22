@@ -1,8 +1,10 @@
-package ru.bmstu.gateway.dto;
+package ru.bmstu.gateway.dto.response;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
 import org.springframework.validation.annotation.Validated;
+import ru.bmstu.gateway.dto.HotelInfo;
+import ru.bmstu.gateway.dto.PaymentInfo;
 import ru.bmstu.gateway.dto.enums.ReservationStatus;
 
 import java.sql.Date;

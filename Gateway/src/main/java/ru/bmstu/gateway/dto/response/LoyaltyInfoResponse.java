@@ -1,4 +1,4 @@
-package ru.bmstu.gateway.dto;
+package ru.bmstu.gateway.dto.response;
 
 import lombok.Data;
 import lombok.experimental.Accessors;

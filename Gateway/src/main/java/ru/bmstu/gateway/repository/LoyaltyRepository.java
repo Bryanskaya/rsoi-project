@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import ru.bmstu.gateway.controller.exception.data.token.UnauthorizedException;
 import ru.bmstu.gateway.controller.exception.service.GatewayErrorException;
 import ru.bmstu.gateway.controller.exception.service.LoyaltyServiceNotAvailableException;
-import ru.bmstu.gateway.dto.LoyaltyInfoResponse;
+import ru.bmstu.gateway.dto.response.LoyaltyInfoResponse;
 
 @Slf4j
 @Repository

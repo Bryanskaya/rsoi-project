@@ -1,8 +1,9 @@
-package ru.bmstu.gateway.dto;
+package ru.bmstu.gateway.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.experimental.Accessors;
+import ru.bmstu.gateway.dto.response.HotelResponse;
 
 import java.io.Serializable;
 import java.util.List;

@@ -1,8 +1,8 @@
 package ru.bmstu.gateway.dto.converter;
 
-import ru.bmstu.gateway.dto.LoyaltyInfoResponse;
-import ru.bmstu.gateway.dto.ReservationResponse;
-import ru.bmstu.gateway.dto.UserInfoResponse;
+import ru.bmstu.gateway.dto.response.LoyaltyInfoResponse;
+import ru.bmstu.gateway.dto.response.ReservationResponse;
+import ru.bmstu.gateway.dto.response.UserInfoResponse;
 
 import java.util.ArrayList;
 

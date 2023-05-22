@@ -9,9 +9,9 @@ import org.springframework.web.reactive.function.BodyInserters;
 import reactor.core.publisher.Mono;
 import ru.bmstu.gateway.controller.exception.service.GatewayErrorException;
 import ru.bmstu.gateway.controller.exception.service.IdentityProviderNotAvailableException;
-import ru.bmstu.gateway.dto.AuthRequest;
-import ru.bmstu.gateway.dto.RegisterRequest;
-import ru.bmstu.gateway.dto.TokenResponse;
+import ru.bmstu.gateway.dto.request.AuthRequest;
+import ru.bmstu.gateway.dto.request.RegisterRequest;
+import ru.bmstu.gateway.dto.response.TokenResponse;
 
 @Slf4j
 @Repository

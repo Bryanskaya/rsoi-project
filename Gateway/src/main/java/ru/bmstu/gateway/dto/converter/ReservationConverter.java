@@ -1,6 +1,9 @@
 package ru.bmstu.gateway.dto.converter;
 
 import ru.bmstu.gateway.dto.*;
+import ru.bmstu.gateway.dto.request.CreateReservationRequest;
+import ru.bmstu.gateway.dto.response.CreateReservationResponse;
+import ru.bmstu.gateway.dto.response.ReservationResponse;
 
 import java.util.UUID;
 
