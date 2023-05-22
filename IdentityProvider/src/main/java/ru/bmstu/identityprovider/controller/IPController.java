@@ -19,14 +19,14 @@ public class IPController {
 
     @PostMapping(value = "/authorize")
     public TokenResponse getToken(@RequestBody AuthRequest request) {
-        log.info(">>> IDENTITY PROVIDER: authorization request");
+        log.info("[IDENTITY PROVIDER]: authorization request was caught.");
 
         return service.getToken(request);
     }
 
     @PostMapping(value = "/register")
     public ResponseEntity register(@RequestBody RegisterRequest request) {
-        log.info(">>> IDENTITY PROVIDER: registration request");
+        log.info("[IDENTITY PROVIDER]: registration request was caught.");
 
         return new ResponseEntity(service.register(request));
     }

@@ -28,12 +28,8 @@ public class IDService {
                 .setGrantType(appParams.grantType)
                 .setClientId(appParams.clientId)
                 .setClientSecret(appParams.clientSecret);
-        log.info(">>> Token request: {}", tokenRequest);
 
-        TokenResponse response = repository.postToken(tokenRequest);
-        log.info(">>> Token response: {}", response);
-
-        return response;
+        return repository.postToken(tokenRequest);
     }
 
     public HttpStatusCode register(RegisterRequest request) {
