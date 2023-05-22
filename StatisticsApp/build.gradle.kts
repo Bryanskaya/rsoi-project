@@ -24,6 +24,8 @@ dependencies {
 	implementation("org.postgresql:postgresql")
 	implementation("org.liquibase:liquibase-core")
 
+	implementation("org.springframework.boot:spring-boot-starter-web")
+
 	compileOnly("org.projectlombok:lombok")
 	annotationProcessor("org.projectlombok:lombok")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")

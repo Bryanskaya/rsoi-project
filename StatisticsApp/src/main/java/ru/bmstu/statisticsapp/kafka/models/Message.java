@@ -1,6 +1,7 @@
 package ru.bmstu.statisticsapp.kafka.models;
 
 
+import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
@@ -9,6 +10,7 @@ import lombok.experimental.Accessors;
 import ru.bmstu.statisticsapp.kafka.models.enums.ActionType;
 
 import java.util.Date;
+import java.util.Map;
 import java.util.UUID;
 
 @Data
@@ -18,18 +20,27 @@ public class Message {
     @JsonProperty("eventUuid")
     public UUID eventUuid;
 
-    @JsonProperty("eventDate")
+    @JsonProperty("eventStart")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss.SSS")
-    public Date eventDate;
+    public Date eventStart;
 
-    @JsonProperty("user")
-    public String user;
+    @JsonProperty("eventEnd")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss.SSS")
+    public Date eventEnd;
+
+    @JsonProperty("username")
+    public String username;
 
     @JsonProperty("action")
     public ActionType action;
 
-    @JsonProperty("requestData")
-    public Object requestData;
+    @JsonProperty("params")
+    public Map<String, Object> params;
+
+    @JsonAnySetter
+    void setParams(String key, Object value) {
+        params.put(key, value);
+    }
 
     @JsonProperty("service")
     public String service;

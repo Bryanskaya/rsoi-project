@@ -8,9 +8,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Service;
 import ru.bmstu.statisticsapp.kafka.dao.exception.InsertException;
+import ru.bmstu.statisticsapp.kafka.dao.exception.SelectException;
 import ru.bmstu.statisticsapp.kafka.models.Message;
+import ru.bmstu.statisticsapp.kafka.models.QueryServiceAvg;
+import ru.bmstu.statisticsapp.kafka.models.ServiceAvg;
+import ru.bmstu.statisticsapp.kafka.models.mappers.MessageRowMapper;
+import ru.bmstu.statisticsapp.kafka.models.mappers.QueryAvgRowMapper;
+import ru.bmstu.statisticsapp.kafka.models.mappers.ServiceAvgRowMapper;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Slf4j
@@ -21,17 +28,20 @@ public class StatisticsDao {
     private NamedParameterJdbcTemplate jdbcTemplate;
 
     private final ObjectMapper mapper = new ObjectMapper();
+    private final MessageRowMapper messageRowMapper = new MessageRowMapper();
+    private final ServiceAvgRowMapper serviceAvgRowMapper = new ServiceAvgRowMapper();
+    private final QueryAvgRowMapper queryAvgRowMapper = new QueryAvgRowMapper();
 
-    private String insertQuery = "INSERT INTO activity_details " +
-            "(event_uuid, username, action, event_date, details, " +
-            "service) " +
-            "VALUES (:eventUuid, :username, :action, :eventDate, :details::json, " +
-            ":service);";
 
     public void insert(Message msg) {
+        String insertQuery = "INSERT INTO activity_details " +
+                "(event_uuid, username, action, event_start, event_end, " +
+                "params, service) " +
+                "VALUES (:eventUuid, :username, :action, :eventStart, :eventEnd, " +
+                ":params::json, :service);";
+
         try {
             Map<String, Object> paramMap = getInsertParams(msg);
-            log.info("{}", paramMap);
 
             jdbcTemplate.update(insertQuery, paramMap);
         } catch (Exception ex) {
@@ -39,13 +49,53 @@ public class StatisticsDao {
         }
     }
 
+    public List<Message> selectAll() {
+        String selectQuery = "SELECT * " +
+                "FROM activity_details;";
+
+        try {
+            return jdbcTemplate.query(selectQuery, messageRowMapper);
+        } catch (Exception ex) {
+            throw new SelectException(ex.getMessage(), ex.getCause() == null ? "" : ex.getCause().getMessage());
+        }
+    }
+
+    public List<ServiceAvg> selectServiceAvgTime() {
+        String selectQuery = "SELECT service, COUNT(*) as num, " +
+                "EXTRACT(EPOCH FROM AVG(event_end - event_start)) * 1000 as avg_time " +
+                "FROM activity_details " +
+                "GROUP BY service " +
+                "ORDER BY avg_time;";
+
+        try {
+            return jdbcTemplate.query(selectQuery, serviceAvgRowMapper);
+        } catch (Exception ex) {
+            throw new SelectException(ex.getMessage(), ex.getCause() == null ? "" : ex.getCause().getMessage());
+        }
+    }
+
+    public List<QueryServiceAvg> selectQueryAvgTime() {
+        String selectQuery = "SELECT service, action, COUNT(*) as num, " +
+                "EXTRACT(EPOCH FROM AVG(event_end - event_start)) * 1000 as avg_time " +
+                "FROM activity_details " +
+                "GROUP BY service, action " +
+                "ORDER BY avg_time;";
+
+        try {
+            return jdbcTemplate.query(selectQuery, queryAvgRowMapper);
+        } catch (Exception ex) {
+            throw new SelectException(ex.getMessage(), ex.getCause() == null ? "" : ex.getCause().getMessage());
+        }
+    }
+
     private Map<String, Object> getInsertParams(Message msg) throws JsonProcessingException {
         return new HashMap<>() {{
             put("eventUuid", msg.eventUuid);
-            put("username", msg.user);
+            put("username", msg.username);
             put("action", msg.action.name());
-            put("eventDate", msg.eventDate);
-            put("details", mapper.writeValueAsString(msg.requestData));
+            put("eventStart", msg.eventStart);
+            put("eventEnd", msg.eventEnd);
+            put("params", mapper.writeValueAsString(msg.params));
             put("service", msg.service);
         }};
     }

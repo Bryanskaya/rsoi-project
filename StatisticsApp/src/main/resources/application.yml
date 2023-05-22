@@ -1,6 +1,4 @@
 spring:
   profiles:
     active: test
-server:
-  port: 8090
 
