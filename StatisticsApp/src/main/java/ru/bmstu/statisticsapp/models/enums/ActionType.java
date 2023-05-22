@@ -1,4 +1,4 @@
-package ru.bmstu.statisticsapp.kafka.models.enums;
+package ru.bmstu.statisticsapp.models.enums;
 
 
 public enum ActionType {

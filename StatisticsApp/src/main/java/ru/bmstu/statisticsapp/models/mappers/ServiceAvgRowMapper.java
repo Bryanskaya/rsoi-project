@@ -1,7 +1,7 @@
-package ru.bmstu.statisticsapp.kafka.models.mappers;
+package ru.bmstu.statisticsapp.models.mappers;
 
 import org.springframework.jdbc.core.RowMapper;
-import ru.bmstu.statisticsapp.kafka.models.ServiceAvg;
+import ru.bmstu.statisticsapp.models.ServiceAvg;
 
 import java.math.BigInteger;
 import java.sql.ResultSet;

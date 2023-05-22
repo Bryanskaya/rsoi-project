@@ -1,4 +1,4 @@
-package ru.bmstu.statisticsapp.kafka.dao.exception;
+package ru.bmstu.statisticsapp.dao.exception;
 
 public class InsertException extends RuntimeException {
     public InsertException(String eMsg, String causeMsg) {

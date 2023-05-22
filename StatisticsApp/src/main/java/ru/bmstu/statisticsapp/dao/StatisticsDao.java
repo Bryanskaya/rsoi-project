@@ -1,4 +1,4 @@
-package ru.bmstu.statisticsapp.kafka.dao;
+package ru.bmstu.statisticsapp.dao;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -7,14 +7,14 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Service;
-import ru.bmstu.statisticsapp.kafka.dao.exception.InsertException;
-import ru.bmstu.statisticsapp.kafka.dao.exception.SelectException;
-import ru.bmstu.statisticsapp.kafka.models.Message;
-import ru.bmstu.statisticsapp.kafka.models.QueryServiceAvg;
-import ru.bmstu.statisticsapp.kafka.models.ServiceAvg;
-import ru.bmstu.statisticsapp.kafka.models.mappers.MessageRowMapper;
-import ru.bmstu.statisticsapp.kafka.models.mappers.QueryAvgRowMapper;
-import ru.bmstu.statisticsapp.kafka.models.mappers.ServiceAvgRowMapper;
+import ru.bmstu.statisticsapp.dao.exception.InsertException;
+import ru.bmstu.statisticsapp.dao.exception.SelectException;
+import ru.bmstu.statisticsapp.models.Message;
+import ru.bmstu.statisticsapp.models.QueryServiceAvg;
+import ru.bmstu.statisticsapp.models.ServiceAvg;
+import ru.bmstu.statisticsapp.models.mappers.MessageRowMapper;
+import ru.bmstu.statisticsapp.models.mappers.QueryAvgRowMapper;
+import ru.bmstu.statisticsapp.models.mappers.ServiceAvgRowMapper;
 
 import java.util.HashMap;
 import java.util.List;

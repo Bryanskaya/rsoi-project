@@ -1,4 +1,4 @@
-package ru.bmstu.statisticsapp.kafka.models;
+package ru.bmstu.statisticsapp.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

@@ -1,10 +1,10 @@
-package ru.bmstu.statisticsapp.kafka.models.mappers;
+package ru.bmstu.statisticsapp.models.mappers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.jdbc.core.RowMapper;
-import ru.bmstu.statisticsapp.kafka.dao.exception.SelectException;
-import ru.bmstu.statisticsapp.kafka.models.Message;
-import ru.bmstu.statisticsapp.kafka.models.enums.ActionType;
+import ru.bmstu.statisticsapp.dao.exception.SelectException;
+import ru.bmstu.statisticsapp.models.Message;
+import ru.bmstu.statisticsapp.models.enums.ActionType;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

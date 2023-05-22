@@ -5,8 +5,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
-import ru.bmstu.statisticsapp.kafka.models.Message;
-import ru.bmstu.statisticsapp.kafka.service.StatisticsService;
+import ru.bmstu.statisticsapp.models.Message;
+import ru.bmstu.statisticsapp.service.StatisticsService;
 
 import java.util.function.Consumer;
 

@@ -1,4 +1,4 @@
-package ru.bmstu.statisticsapp.kafka.controller;
+package ru.bmstu.statisticsapp.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -6,9 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.bmstu.statisticsapp.kafka.service.StatisticsService;
-
-import java.util.List;
+import ru.bmstu.statisticsapp.service.StatisticsService;
 
 @Slf4j
 @RestController

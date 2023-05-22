@@ -1,4 +1,4 @@
-package ru.bmstu.statisticsapp.kafka.models;
+package ru.bmstu.statisticsapp.models;
 
 
 import com.fasterxml.jackson.annotation.JsonAnySetter;
@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.ToString;
 import lombok.experimental.Accessors;
-import ru.bmstu.statisticsapp.kafka.models.enums.ActionType;
+import ru.bmstu.statisticsapp.models.enums.ActionType;
 
 import java.util.Date;
 import java.util.Map;
