@@ -7,6 +7,7 @@ host:
     loyalty: "loyaltyapp"
     payment: "paymentapp"
     identityProvider: "identityprovider"
+    statistics: "statisticsapp"
 
 path:
   service:
@@ -15,6 +16,7 @@ path:
     reservation: "api/v1/reservations"
     payment: "api/v1/payments"
     identityProvider: "api/v1/identityprovider"
+    statistics: "api/v1/statistics"
 
 port:
   service:
@@ -22,6 +24,7 @@ port:
     loyalty: "8050"
     payment: "8060"
     identityProvider: "8040"
+    statistics: "8090"
 
 const:
   jwt:

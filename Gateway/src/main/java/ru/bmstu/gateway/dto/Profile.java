@@ -21,4 +21,13 @@ public class Profile {
 
     @JsonProperty(value = "mobilePhone")
     public String mobilePhone;
+
+    public String toString() {
+        return "Profile [firstname=" + firstName +
+                ", lastname=" + lastName +
+                ", email=" + email +
+                ", login=" + login +
+                ", mobilePhone=" + mobilePhone +
+                "]";
+    }
 }

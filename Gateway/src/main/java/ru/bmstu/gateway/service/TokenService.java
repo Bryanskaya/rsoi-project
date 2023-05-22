@@ -44,4 +44,8 @@ public class TokenService {
     public String getUsername(String token) {
         return tokenRepository.getUsername(token);
     }
+
+    public String getRole(String token) {
+        return tokenRepository.getRole(token);
+    }
 }

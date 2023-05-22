@@ -16,6 +16,8 @@ import ru.bmstu.gateway.dto.*;
 import ru.bmstu.gateway.dto.converter.HotelInfoConverter;
 import ru.bmstu.gateway.dto.converter.PaymentConverter;
 import ru.bmstu.gateway.dto.converter.ReservationConverter;
+import ru.bmstu.gateway.dto.statistics.QueryServiceAvg;
+import ru.bmstu.gateway.dto.statistics.ServiceAvg;
 import ru.bmstu.gateway.repository.*;
 
 import java.util.ArrayList;
@@ -27,15 +29,14 @@ import static ru.bmstu.gateway.dto.converter.UserInfoResponseConverter.createUse
 @Service
 @RequiredArgsConstructor
 public class GatewayService {
-    @Autowired
     private final TokenRepository tokenRepository;
 
     private final LoyaltyRepository loyaltyRepository;
     private final HotelRepository hotelRepository;
     private final ReservationRepository reservationRepository;
     private final PaymentRepository paymentRepository;
-
     private final IdentityProviderRepository identityProviderRepository;
+    private final StatisticsRepository statisticsRepository;
 
 
     public HttpStatusCode register(RegisterRequest request) {
@@ -165,6 +166,18 @@ public class GatewayService {
         paymentRepository.cancelPayment(reservationDTO.getPaymentUid());
 
         loyaltyRepository.cancelLoyalty(bearerToken);
+    }
+
+    public LogInfoDTO[] getStatistics() {
+        return statisticsRepository.getStatistics();
+    }
+
+    public ServiceAvg[] getServiceAvgTime() {
+        return statisticsRepository.getServiceAvgTime();
+    }
+
+    public QueryServiceAvg[] getQueryAvgTime() {
+        return statisticsRepository.getQueryAvgTime();
     }
 }
 

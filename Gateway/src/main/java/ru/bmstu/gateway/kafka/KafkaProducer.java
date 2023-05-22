@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.stream.function.StreamBridge;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 import ru.bmstu.gateway.dto.LogInfoDTO;
 
@@ -17,6 +18,7 @@ public class KafkaProducer {
 
     private final StreamBridge streamBridge;
 
+    @Async
     public void send(LogInfoDTO data) {
         try {
             streamBridge.send(topic, data);

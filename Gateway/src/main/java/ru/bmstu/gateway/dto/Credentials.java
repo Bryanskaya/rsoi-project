@@ -14,4 +14,8 @@ public class Credentials {
         @JsonProperty(value = "value")
         public String value;
     }
+
+    public String toString() {
+        return "Credentials [<hidden>]";
+    }
 }

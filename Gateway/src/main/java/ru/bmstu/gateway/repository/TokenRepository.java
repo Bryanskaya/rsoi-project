@@ -20,14 +20,19 @@ import java.util.function.Function;
 @Repository
 public class TokenRepository extends BaseRepository {
     public String getUsername(String token) {
-        return _getClaim(token, Claims::getSubject);
+        return getClaim(token, Claims::getSubject);
     }
 
     public Date getExpirationDate(String token) {
-        return _getClaim(token, Claims::getExpiration);
+        return getClaim(token, Claims::getExpiration);
     }
 
-    private <T> T _getClaim(String token, Function<Claims, T> claimsResolver) {
+    public String getRole(String token) {
+        Claims claims = getClaims(token);
+        return (String)claims.get("userRole");
+    }
+
+    private Claims getClaims(String token) {
         String jwtToken = token.replace(appParams.jwtPrefix, "");
 
         BigInteger modulus = new BigInteger(1, Base64.getUrlDecoder().decode(appParams.modulus));
@@ -51,6 +56,11 @@ public class TokenRepository extends BaseRepository {
             throw new JwtParsingException(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
 
+        return claims;
+    }
+
+    private <T> T getClaim(String token, Function<Claims, T> claimsResolver) {
+        Claims claims = getClaims(token);
         return claimsResolver.apply(claims);
     }
 }

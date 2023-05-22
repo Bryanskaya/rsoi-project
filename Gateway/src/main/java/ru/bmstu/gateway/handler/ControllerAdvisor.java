@@ -17,6 +17,7 @@ public class ControllerAdvisor {
             PaymentServiceNotAvailableException.class,
             ReservationServiceNotAvailableException.class,
             IdentityProviderNotAvailableException.class,
+            StatisticsServiceNotAvailableException.class,
             UnauthorizedException.class,
             TokenExpiredException.class,
             JwtParsingException.class,
@@ -34,12 +35,14 @@ public class ControllerAdvisor {
 
     @ExceptionHandler(GatewayErrorException.class)
     public ResponseEntity<?> handleGatewayErrorException(GatewayErrorException ex) {
+        HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
+
         Error err = new Error()
-                .setCode(HttpStatus.INTERNAL_SERVER_ERROR.value())
+                .setCode(status.value())
                 .setMessage(ex.getMessage());
 
         return ResponseEntity
-                .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .status(status)
                 .body(err);
     }
 
@@ -49,23 +52,40 @@ public class ControllerAdvisor {
             ReservationByUsernameReservationUidNotFoundException.class
     })
     public ResponseEntity<?> handleReservationByUsernameNotFoundException(ReservationByUsernameNotFoundException ex) {
+        HttpStatus status = HttpStatus.NOT_FOUND;
+
         Error err = new Error()
-                .setCode(HttpStatus.NOT_FOUND.value())
+                .setCode(status.value())
                 .setMessage(ex.getMessage());
 
         return ResponseEntity
-                .status(HttpStatus.NOT_FOUND)
+                .status(status)
                 .body(err);
     }
 
     @ExceptionHandler(RequestDataErrorException.class)
     public ResponseEntity<?> handleRequestDataErrorException(RequestDataErrorException ex) {
+        HttpStatus status = HttpStatus.BAD_REQUEST;
+
         Error err = new Error()
-                .setCode(HttpStatus.BAD_REQUEST.value())
+                .setCode(status.value())
                 .setMessage(ex.getMessage());
 
         return ResponseEntity
-                .status(HttpStatus.BAD_REQUEST)
+                .status(status)
+                .body(err);
+    }
+
+    @ExceptionHandler(RolePermissionException.class)
+    public ResponseEntity<?> handleRolePermissionException(RolePermissionException ex) {
+        HttpStatus status = HttpStatus.FORBIDDEN;
+
+        Error err = new Error()
+                .setCode(status.value())
+                .setMessage(ex.getMessage());
+
+        return ResponseEntity
+                .status(status)
                 .body(err);
     }
 }
