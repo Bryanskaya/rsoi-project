@@ -1,12 +1,12 @@
 package ru.bmstu.loyaltyapp.model;
 
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.experimental.Accessors;
 import ru.bmstu.loyaltyapp.dto.enums.StatusEnum;
 
-import javax.persistence.*;
 
 @Data
 @Entity

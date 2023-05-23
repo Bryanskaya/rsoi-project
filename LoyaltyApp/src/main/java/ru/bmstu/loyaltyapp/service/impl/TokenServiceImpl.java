@@ -24,12 +24,8 @@ public class TokenServiceImpl implements TokenService {
         if (token == null || token.isEmpty())
             throw new JwtEmptyException(HttpStatus.UNAUTHORIZED);
 
-        log.info(">>> LOYALTY: token is not null or empty");
-
         if (isExpired(token))
             throw new TokenExpiredException();
-
-        log.info(">>> LOYALTY: token is not expired");
 
         return true;
     }
@@ -37,5 +33,9 @@ public class TokenServiceImpl implements TokenService {
     public boolean isExpired(String token) {
         Date expirationDate = tokenRepository.getExpirationDate(token);
         return expirationDate.before(new Date());
+    }
+
+    public String getUsername(String token) {
+        return tokenRepository.getUsername(token);
     }
 }

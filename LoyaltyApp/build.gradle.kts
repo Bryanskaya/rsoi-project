@@ -1,6 +1,6 @@
 plugins {
-	id("org.springframework.boot") version "2.7.5"
-	id("io.spring.dependency-management") version "1.0.15.RELEASE"
+	id("org.springframework.boot") version "3.0.6"
+	id("io.spring.dependency-management") version "1.1.0"
 	java
 }
 
@@ -8,16 +8,21 @@ repositories {
 	mavenCentral()
 }
 
+val springCloudVersion = "2022.0.0"
+
 dependencies {
+	implementation(platform("org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"))
+
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-jdbc")
 	implementation("org.liquibase:liquibase-core")
-	implementation("org.hibernate:hibernate-gradle-plugin:5.6.11.Final")
-	implementation("org.hibernate:hibernate-validator:8.0.0.Final")
-	implementation("javax.validation:validation-api:2.0.1.Final")
 
 	implementation("org.postgresql:postgresql")
+
+	implementation("org.springframework.cloud:spring-cloud-stream-binder-kafka-streams")
+	implementation("org.springframework.cloud:spring-cloud-stream")
+	implementation("org.springframework.cloud:spring-cloud-starter-stream-kafka")
 
 	// jwt
 	implementation("io.jsonwebtoken:jjwt-api:0.11.5")

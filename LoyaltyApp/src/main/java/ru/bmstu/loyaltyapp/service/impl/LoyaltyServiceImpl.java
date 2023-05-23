@@ -23,6 +23,7 @@ import static ru.bmstu.loyaltyapp.service.converter.LoyaltyConverter.fromLoyalty
 @Service
 @RequiredArgsConstructor
 public class LoyaltyServiceImpl implements LoyaltyService {
+    @Autowired
     private final LoyaltyRepository loyaltyRepository;
 
     @Autowired
