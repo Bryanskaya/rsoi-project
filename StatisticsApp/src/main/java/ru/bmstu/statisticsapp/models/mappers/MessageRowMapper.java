@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.jdbc.core.RowMapper;
 import ru.bmstu.statisticsapp.dao.exception.SelectException;
 import ru.bmstu.statisticsapp.models.Message;
-import ru.bmstu.statisticsapp.models.enums.ActionType;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,7 +21,7 @@ public class MessageRowMapper implements RowMapper<Message> {
         msg.username = rs.getString("username");
         msg.eventStart = rs.getTimestamp("event_start");
         msg.eventEnd = rs.getTimestamp("event_end");
-        msg.action = ActionType.valueOf(rs.getString("action"));
+        msg.action = rs.getString("action");
         msg.service = rs.getString("service");
         try {
             msg.params = mapper.readValue(rs.getString("params"), Map.class);

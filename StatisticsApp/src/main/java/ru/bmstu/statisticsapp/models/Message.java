@@ -7,7 +7,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.ToString;
 import lombok.experimental.Accessors;
-import ru.bmstu.statisticsapp.models.enums.ActionType;
 
 import java.util.Date;
 import java.util.Map;
@@ -32,7 +31,7 @@ public class Message {
     public String username;
 
     @JsonProperty("action")
-    public ActionType action;
+    public String action;
 
     @JsonProperty("params")
     public Map<String, Object> params;

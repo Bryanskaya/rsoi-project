@@ -92,7 +92,7 @@ public class StatisticsDao {
         return new HashMap<>() {{
             put("eventUuid", msg.eventUuid);
             put("username", msg.username);
-            put("action", msg.action.name());
+            put("action", msg.action);
             put("eventStart", msg.eventStart);
             put("eventEnd", msg.eventEnd);
             put("params", mapper.writeValueAsString(msg.params));
