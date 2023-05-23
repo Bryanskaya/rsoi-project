@@ -12,7 +12,7 @@ import ru.bmstu.gateway.controller.exception.data.RequestDataErrorException;
 import ru.bmstu.gateway.controller.exception.data.token.RolePermissionException;
 import ru.bmstu.gateway.dto.*;
 import ru.bmstu.gateway.dto.enums.Role;
-import ru.bmstu.gateway.dto.enums.logStatuses.ActionType;
+import ru.bmstu.gateway.config.ActionType;
 import ru.bmstu.gateway.dto.request.AuthRequest;
 import ru.bmstu.gateway.dto.request.CreateReservationRequest;
 import ru.bmstu.gateway.dto.request.RegisterRequest;

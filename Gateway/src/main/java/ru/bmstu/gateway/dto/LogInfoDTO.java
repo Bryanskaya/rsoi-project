@@ -7,7 +7,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
-import ru.bmstu.gateway.dto.enums.logStatuses.ActionType;
 
 import java.util.Date;
 import java.util.Map;
@@ -33,7 +32,7 @@ public class LogInfoDTO {
     public String username;
 
     @JsonProperty("action")
-    public ActionType action;
+    public String action;
 
     @JsonProperty("params")
     public Map<String, Object> params;
@@ -47,7 +46,7 @@ public class LogInfoDTO {
     public String service;
 
 
-    public LogInfoDTO(String user, Date eventStart, Date eventEnd, ActionType action, Object params) {
+    public LogInfoDTO(String user, Date eventStart, Date eventEnd, String action, Object params) {
         ObjectMapper mapper = new ObjectMapper();
 
         this.eventUuid = UUID.randomUUID();
