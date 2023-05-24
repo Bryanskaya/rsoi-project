@@ -2,5 +2,7 @@ package ru.bmstu.reservationapp.service;
 
 
 public interface TokenService {
-    public boolean validateToken(String token);
+    boolean validateToken(String token);
+
+    String getUsername(String token);
 }

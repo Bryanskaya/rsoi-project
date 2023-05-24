@@ -6,6 +6,25 @@ spring:
     url: jdbc:postgresql://postgres:5432/reservations
     username: program
     password: test
+  cloud:
+    function:
+      definition: producer
+    stream:
+      kafka:
+        binder:
+          brokers: kafka:9092
+          auto-add-partitions: true
+          auto-create-topics: true
+          producer-properties:
+            allow:
+              auto:
+                create:
+                  topics: true
+      bindings:
+        producer-out-0:
+          group: dev_reservation_producer
+          destination: dev.rsoi.statistics.event
+
 
 const:
   jwt:

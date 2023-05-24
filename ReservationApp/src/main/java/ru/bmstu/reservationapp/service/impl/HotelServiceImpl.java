@@ -11,7 +11,7 @@ import ru.bmstu.reservationapp.repository.HotelRepository;
 import ru.bmstu.reservationapp.service.HotelService;
 import ru.bmstu.reservationapp.service.converter.HotelConverter;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 

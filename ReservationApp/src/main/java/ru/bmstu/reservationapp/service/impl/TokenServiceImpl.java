@@ -32,4 +32,8 @@ public class TokenServiceImpl implements TokenService {
         Date expirationDate = tokenRepository.getExpirationDate(token);
         return expirationDate.before(new Date());
     }
+
+    public String getUsername(String token) {
+        return tokenRepository.getUsername(token);
+    }
 }

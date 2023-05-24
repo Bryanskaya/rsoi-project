@@ -4,7 +4,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import ru.bmstu.reservationapp.dto.HotelResponse;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.UUID;
 
 
