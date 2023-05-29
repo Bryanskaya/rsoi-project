@@ -1,16 +1,16 @@
-import axios from "axios";
+import axiosBackend from "..";
 import { backUrl } from "..";
 
 interface resp {
     status: number
-    content: number
+    content: string
 }
 
-const GetLikes = async function(id: number): Promise<resp> {
-    const response = await axios.get(backUrl + `/recipes/${id}/like/amount`);
+const GetImageUrl = async function(hotelUid: number): Promise<resp> {
+    const response = await axiosBackend.get(backUrl + `/hotels/${hotelUid}/image`);
     return {
         status: response.status,
-        content: response.data as number
+        content: response.data as string
     };
 }
-export default GetLikes;
+export default GetImageUrl;

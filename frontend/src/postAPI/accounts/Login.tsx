@@ -1,23 +1,21 @@
-import axios from "axios";
-import { backUrl } from "..";
+import axiosBackend from ".."
 import { Account } from "types/Account";
-import { CookieSetOptions } from "universal-cookie";
 
 interface resp {
   status: number
 }
 
-export const Login = async function (data: Account, setCookie): Promise<resp> {
-  const response = await axios
-    .post(backUrl + `/accounts/login`, data, { withCredentials: true })
+export const Login = async function (data: Account): Promise<resp> {
+  const response = await axiosBackend
+    .post(`/authorize`, data, { withCredentials: true })
     .then((data) => data)
     .catch((error) => {
-      return { status: error.response?.status, data: error.response.data };
+      return { status: error.response?.status, data: error.response?.data };
     });
 
   if (response.status === 200) {
-    setCookie("login", response.data.login, { path: "/" });
-    setCookie("role", response.data.role, { path: "/" });
+    localStorage.setItem("token", response.data.access_token);
+    localStorage.setItem("username", data.username);
   }
 
   return {

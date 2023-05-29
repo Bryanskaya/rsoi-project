@@ -1,17 +1,17 @@
 import axios from "axios";
-import { Recipe } from "types/Recipe";
+import { Hotel } from "types/Hotel";
 import { backUrl } from "..";
 
 interface resp {
     status: number
-    content: Recipe
+    content: Hotel
 }
 
 const GetRecipe = async function(id: number): Promise<resp> {
     const response = await axios.get(backUrl + `/recipes/${id}`);
     return {
         status: response.status,
-        content: response.data as Recipe
+        content: response.data as Hotel
     };
 }
 

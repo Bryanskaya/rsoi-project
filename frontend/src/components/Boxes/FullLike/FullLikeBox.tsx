@@ -3,19 +3,19 @@ import {
     InputProps as IProps,
     Box, Text
 } from "@chakra-ui/react";
-import FullLike from "components/Icons/FullLike";
 
 import styles from "./FullLikeBox.module.scss";
+import RubIcon from "components/Icons/Rub";
 
 interface InputProps extends IProps {
-    likesNum?: number | string
+    price?: number | string
 }
 
 const FullLikeBox: React.FC<InputProps> = (props) => {
     return (
     <Box className={styles.likes_box}> 
-        <FullLike />
-        <Text> {props.likesNum} </Text>
+        <RubIcon />
+        <Text> {props.price} </Text>
     </Box>
     )
 }

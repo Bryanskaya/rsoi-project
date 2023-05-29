@@ -1,7 +1,7 @@
 import axios from "axios";
-import { AllRecipeResp, backUrl } from "..";
+import { AllHotelResp, backUrl } from "..";
 
-const GetRecipes = async function(login: string): Promise<AllRecipeResp> {
+const GetRecipes = async function(login: string): Promise<AllHotelResp> {
     const response = await axios.get(backUrl + `/accounts/${login}/like`);
     return {
         status: response.status,

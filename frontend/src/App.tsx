@@ -43,8 +43,8 @@ function Routing() {
       <Route path="/accounts/:login/recipes" element={<AuthorRecipesPage/>}/>
       <Route path="/accounts/:login/likes" element={<LikedRecipesPage/>}/>
 
-      <Route path="/auth/signin" element={<Login/>}/>
-      <Route path="/auth/signup" element={<SignUp/>}/>
+      <Route path="/authorize" element={<Login/>}/>
+      <Route path="/register" element={<SignUp/>}/>
 
       <Route path="/recipes/:id" element={<RecipeInfoPage />}/>
 

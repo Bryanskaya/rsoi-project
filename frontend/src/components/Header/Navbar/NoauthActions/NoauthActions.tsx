@@ -8,7 +8,7 @@ import LoginIcon from 'components/Icons/Login'
 export interface NoauthActionsProps {}
 const NoauthActions: React.FC<NoauthActionsProps> = () => {
     return (
-        <Link className={styles['user-act']} href="/auth/signin">
+        <Link className={styles['user-act']} href="/authorize">
             <Box><LoginIcon/></Box>
             <Text>Войти</Text>
         </Link>

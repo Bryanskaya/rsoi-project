@@ -1,13 +1,13 @@
 import { Box } from "@chakra-ui/react";
 import React from "react";
 import RecipeCard from "../RecipeCard";
-import { AllRecipeResp } from "postAPI"
+import { AllHotelResp } from "postAPI"
 
 import styles from "./RecipeMap.module.scss";
 
 interface RecipeBoxProps {
     searchQuery?: string
-    getCall: (title?: string) => Promise<AllRecipeResp>
+    getCall: (title?: string) => Promise<AllHotelResp>
 }
 
 type State = {
@@ -25,7 +25,7 @@ class RecipeMap extends React.Component<RecipeBoxProps, State> {
     async getAll() {
         var data = await this.props.getCall(this.props.searchQuery)
         if (data.status === 200)
-            this.setState({postContent: data.content})
+            this.setState({postContent: data.content.items})
     }
 
     componentDidMount() {

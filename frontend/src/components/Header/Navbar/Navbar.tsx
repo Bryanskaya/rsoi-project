@@ -14,7 +14,8 @@ import NoauthActions from "./NoauthActions";
 export interface NavbarProps {}
 const Navbar: React.FC<NavbarProps> = () => {
     let [cookie, , removeCookie] = useCookies(['role', 'login', 'token']);
-    let role = cookie.role ? cookie.role : ''
+    let role = cookie.role ? cookie.role : '';
+    let username = (localStorage.getItem('username') !== null ? localStorage.getItem('username') : '')!;
 
     const [items, ] = React.useState(navItems[role]);
     const logout = () => {
@@ -28,8 +29,8 @@ const Navbar: React.FC<NavbarProps> = () => {
         <Box className={styles.navpages}> {items.map(item =>
             <Link key={item.name} href={item.ref}> {item.name} </Link>
         )} </Box>
-        { role !== '' && <AuthActions login={cookie.login} logout={logout} />}
-        { role === '' && <NoauthActions /> }
+        { username !== '' && <AuthActions login={username.slice(0, 10)} logout={logout} />}
+        { username === '' && <NoauthActions /> }
     </Box>
     )
 }

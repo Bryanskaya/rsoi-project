@@ -26,11 +26,11 @@ type SignUpProps = {
 
 
 class SignUpPage extends React.Component<SignUpProps> {
-    acc: Account = {login: ""}
+    acc: Account = {username: ""}
     repPassword: string = ""
 
     setLogin(val: string) {
-        this.acc.login = val
+        this.acc.username = val
     }
     setPassword(val: string) {
         this.acc.password = val
@@ -60,7 +60,7 @@ class SignUpPage extends React.Component<SignUpProps> {
         e.currentTarget.disabled = true
         var data = await CreateQuery(this.acc)
         if (data.status === 200) {
-            await LoginQuery(this.acc, this.props.setCookie)
+            await LoginQuery(this.acc)
             window.location.href = '/';
         } else {
             e.currentTarget.disabled = false
@@ -85,7 +85,7 @@ class SignUpPage extends React.Component<SignUpProps> {
                 <RoundButton type="submit" onClick={event => this.submit(event)}>
                     Создать аккаунт
                 </RoundButton>
-                <Link href="/auth/signin">Войти</Link>
+                <Link href="/authorize">Войти</Link>
             </Box>
         </Box>
     }

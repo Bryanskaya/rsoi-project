@@ -16,8 +16,8 @@ interface UserProps extends AccountI {
 }
 
 const UserCard: React.FC<UserProps> = (props) => {
-  const pathRecipes = "/accounts/" + props.login + "/recipes";
-  const pathLiked = "/accounts/" + props.login + "/likes";
+  const pathRecipes = "/accounts/" + props.username + "/recipes";
+  const pathLiked = "/accounts/" + props.username + "/likes";
 
   return (
     <Box className={styles.main_box}>
@@ -27,20 +27,20 @@ const UserCard: React.FC<UserProps> = (props) => {
 
           <VStack className={styles.role}>
             <Text>Роль</Text>
-            <RoleBox login={props.login} role={props.role}/>
+            <RoleBox login={props.username} role={props.role}/>
           </VStack>
         </VStack>
 
         <VStack className={styles.info}>
           <Text>Логин</Text>
-          <LoginBox login={props.login} className={styles.login} />
+          <LoginBox login={props.username} className={styles.login} />
 
           <Link href={pathRecipes}>
-            <RecipeBox data={"Рецепты"} className={styles.recipes} />
+            <RecipeBox data={"Отели"} className={styles.recipes} />
           </Link>
 
           <Link href={pathLiked}>
-            <FullLikeBox likesNum={"Понравилось"} />
+            {/* <FullLikeBox likesNum={"Понравилось"} /> */}
           </Link>
         </VStack>
       </HStack>

@@ -20,7 +20,7 @@ const RecipeHeader: React.FC<TitlesProps> = (props) => {
         
         var data = await GetRecipe(Number(qParams.id))
         if (data.status === 200)
-            setAuthor(data.content.author)
+            setAuthor(data.content.name)
     }
 
     getAuthor()

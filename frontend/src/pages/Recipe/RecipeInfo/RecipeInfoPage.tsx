@@ -6,7 +6,7 @@ import GetRecipe from "postAPI/recipes/Get"
 import GetIngredient from "postAPI/ingredients/Get";
 import GetSteps from "postAPI/steps/Get";
 import PushStep from "postAPI/steps/Push";
-import GetLikes from "postAPI/likes/Get";
+import GetImageUrl from "postAPI/likes/Get";
 import DeleteLike from "postAPI/likes/Delete";
 import AddLike from "postAPI/likes/Add";
 import GetIsLiked from "postAPI/likes/GetLiked";
@@ -15,7 +15,7 @@ import DeleteStep from "postAPI/steps/Delete";
 import PutIngredient from "postAPI/ingredients/Post";
 import DeleteRecipe from "postAPI/recipes/Delete";
 
-import {Recipe as RecipeT} from "types/Recipe"
+import {Hotel as HotelT} from "types/Hotel"
 import {Ingredient as IngredientT} from "types/Ingredient";
 import {Step as StepT} from "types/Step";
 
@@ -26,7 +26,7 @@ import AddIcon from "components/Icons/Add";
 
 import Ingredient from "components/IngredientBox";
 import IngredientModel from "components/InputIngredient";
-import ClockBox from "components/Boxes/Clock";
+import StarBox from "components/Boxes/Star";
 import FullLikeBox from "components/Boxes/FullLike";
 import PortionBox from "components/Boxes/Portion";
 
@@ -35,7 +35,7 @@ import StepBox from "components/Boxes/Step";
 
 
 type State = {
-    recipe?: RecipeT,
+    recipe?: HotelT,
     liked: boolean,
     ingredients: Array<IngredientT>,
     steps: Array<StepT>,
@@ -93,9 +93,9 @@ class RecipeInfoPage extends React.Component<RecipeInfoParams, State> {
     }
 
     async getLikes() {
-        var data = await GetLikes(this.id)
+        var data = await GetImageUrl(this.id)
         if (data.status === 200) {
-            this.setState({likes: data.content})
+            // this.setState({likes: data.content})
         }
     }
 
@@ -153,15 +153,15 @@ class RecipeInfoPage extends React.Component<RecipeInfoParams, State> {
         GetRecipe(this.id).then(data => {
             if (data.status === 200) {
                 this.setState({recipe: data.content})
-                this.setState({isAuthor: this.state.recipe?.author === this.props.cookie.login})
+                this.setState({isAuthor: this.state.recipe?.name === this.props.cookie.login})
 
                 var elem = document.getElementById("title")
                 if (elem && this.state.recipe)
-                    elem.innerText = this.state.recipe.title
+                    elem.innerText = this.state.recipe.country
 
                 elem = document.getElementById("author")
                 if (elem && this.state.recipe)
-                    elem.innerText = this.state.recipe.author
+                    elem.innerText = this.state.recipe.name
             }
         });
 
@@ -213,13 +213,13 @@ class RecipeInfoPage extends React.Component<RecipeInfoParams, State> {
 
                     <Box className={styles.info_block}>
                         <HStack className={styles.items_block}>
-                            <ClockBox duration={this.state.recipe?.duration}/>
-                            <FullLikeBox likesNum={this.state.likes}/>
-                            <PortionBox portionNum={this.state.recipe?.portion_num}/>
+                            <StarBox duration={this.state.recipe?.stars}/>
+                            {/* <FullLikeBox likesNum={this.state.likes}/> */}
+                            <PortionBox portionNum={this.state.recipe?.price}/>
                         </HStack>
 
                         <Text>
-                            {this.state.recipe?.description}
+                            {this.state.recipe?.address}
                         </Text>
 
                         <Box>

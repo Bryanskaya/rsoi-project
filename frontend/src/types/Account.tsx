@@ -1,5 +1,4 @@
 export interface Account {
-    login:	string,
-    password?:	string,
-    role?: string
+    username:	string,
+    password?:	string
 }
