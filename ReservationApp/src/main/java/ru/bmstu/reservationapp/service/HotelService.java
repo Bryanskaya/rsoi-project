@@ -13,5 +13,6 @@ public interface HotelService {
     HotelResponse getHotelByHotelId(Integer hotelId);
     HotelResponse getHotelByHotelUid(UUID hotelUid);
     Integer getHotelIdByHotelUid(UUID hotelUid);
+    String getHotelImageUrlByHotelUid(UUID hotelUid);
     Integer getHotelDatePrice(UUID hotelUid, Date startDate, Date endDate);
 }

@@ -110,6 +110,23 @@ public class HotelController {
         return res;
     }
 
+    @GetMapping(value = "/{hotelUid}/image", produces = "application/json")
+    public ResponseEntity<?> getHotelImageUrlByHotelUid(@PathVariable UUID hotelUid) {
+        log.info("[RESERVATION]: Request to get image url by hotelUid={} was caught.", hotelUid);
+        Date startDate = new Date();
+
+        ResponseEntity<?> res = ResponseEntity
+                .ok()
+                .body(hotelService.getHotelImageUrlByHotelUid(hotelUid));
+
+        producer.send(new LogInfoDTO(null, startDate, new Date(),
+                ActionType.MICROSERVICE_IMAGEURL_BY_HOTELID, new HashMap<String, UUID>() {{
+            put("hotelUid", hotelUid);
+        }}));
+
+        return res;
+    }
+
 
     @GetMapping(value = "/{hotelUid}/price", produces = "application/json")
     public ResponseEntity<Integer> getHotelDatePrice(@PathVariable UUID hotelUid,

@@ -95,4 +95,24 @@ public class HotelRepository extends BaseRepository {
                 })
                 .block();
     }
+
+    public String getHotelImageByHotelUid(UUID hotelUid) {
+        return webClient
+                .get()
+                .uri(uriBuilder -> uriBuilder
+                        .host(appParams.hostHotel)
+                        .path(appParams.pathHotel + "/{hotelUid}/image")
+                        .port(appParams.portHotel)
+                        .build(hotelUid))
+                .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                .retrieve()
+                .onStatus(HttpStatusCode::isError, error -> {
+                    throw new HotelServiceNotAvailableException(error.statusCode());
+                })
+                .bodyToMono(String.class)
+                .onErrorMap(Throwable.class, error -> {
+                    throw new GatewayErrorException(error.getMessage());
+                })
+                .block();
+    }
 }

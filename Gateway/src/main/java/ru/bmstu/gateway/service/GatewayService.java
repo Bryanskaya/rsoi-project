@@ -54,6 +54,10 @@ public class GatewayService {
         return hotelRepository.getHotels(page, size);
     }
 
+    public String getHotelImageByHotelUid(UUID hotelUid) {
+        return hotelRepository.getHotelImageByHotelUid(hotelUid);
+    }
+
     public UserInfoResponse getUserInfo(String bearerToken) {
         ArrayList<ReservationResponse> reservationResponseList = getReservationsList(bearerToken);
 

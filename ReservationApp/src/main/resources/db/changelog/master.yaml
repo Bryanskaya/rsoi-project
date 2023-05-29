@@ -8,3 +8,9 @@
     - include:
         file: 2022-11-05-insert-table-hotels.sql
         relativeToChangelogFile: true
+    - include:
+          file: 2023-05-28-create-table-images.sql
+          relativeToChangelogFile: true
+    - include:
+          file: 2023-05-29-insert-table-images.sql
+          relativeToChangelogFile: true

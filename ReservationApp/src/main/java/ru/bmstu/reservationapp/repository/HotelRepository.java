@@ -20,4 +20,8 @@ public interface HotelRepository extends JpaRepository<HotelEntity, Integer> {
     @Query(value = "SELECT id FROM hotels WHERE hotel_uid = ?1",
             nativeQuery = true)
     Integer getHotelIdByHotelUid(UUID hotelUid);
+
+    @Query(value = "SELECT url FROM images WHERE id = ?1",
+            nativeQuery = true)
+    String getHotelImageUrlByHotelUid(UUID hotelUid);
 }

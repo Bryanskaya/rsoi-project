@@ -28,6 +28,7 @@ import java.util.UUID;
 
 @Slf4j
 @RestController
+@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
 @RequestMapping("api/v1")
 @RequiredArgsConstructor
 public class GatewayController {
@@ -87,6 +88,24 @@ public class GatewayController {
         }}));
 
         return hotelArr;
+    }
+
+    @GetMapping(value = "/hotels/{hotelUid}/image", produces = "application/json")
+    public String getHotelImageByHotelUid(@RequestHeader(value = "Authorization", required = false) String bearerToken,
+                                          @PathVariable UUID hotelUid) {
+        log.info("[GATEWAY]: Request to get hotel's url image by hotelUid={} was caught.", hotelUid);
+        Date startDate = new Date();
+
+        tokenService.validateToken(bearerToken);
+
+        String hotelImageUrl = gatewayService.getHotelImageByHotelUid(hotelUid);
+
+        producer.send(new LogInfoDTO(tokenService.getUsername(bearerToken), startDate, new Date(), ActionType.HOTEL_IMAGE,
+                new HashMap<String, UUID>() {{
+                    put("hotelUid", hotelUid);
+                }}));
+
+        return hotelImageUrl;
     }
 
     @GetMapping(value = "/me", produces = "application/json")

@@ -45,6 +45,10 @@ public class HotelServiceImpl implements HotelService {
         return hotelRepository.getHotelIdByHotelUid(hotelUid);
     }
 
+    public String getHotelImageUrlByHotelUid(UUID hotelUid) {
+        return hotelRepository.getHotelImageUrlByHotelUid(hotelUid);
+    }
+
     @Transactional(readOnly = true)
     public Integer getHotelDatePrice(UUID hotelUid, Date startDate, Date endDate) {
         HotelEntity hotelEntity = hotelRepository.getHotelByUid(hotelUid);
