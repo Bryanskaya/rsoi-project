@@ -13,6 +13,7 @@ import Input from "components/Input";
 import RoundButton from "components/RoundButton";
 
 import styles from "./SignupPage.module.scss";
+import { RegistrationCard } from "types/RegistrationCard";
 
 type SignUpProps = {
     navigate: NavigateFunction
@@ -26,14 +27,40 @@ type SignUpProps = {
 
 
 class SignUpPage extends React.Component<SignUpProps> {
-    acc: Account = {username: ""}
+    registrationCard: RegistrationCard = {
+        profile: {
+            firstName: "",
+            lastName: "",
+            email: "",
+            login: "",
+            mobilePhone: ""
+        },
+        credentials: {
+            password: {
+                value: ""
+            }
+        }
+    }
+
     repPassword: string = ""
 
+    setFirstName(val: string) {
+        this.registrationCard.profile.firstName = val
+    }
+    setLastName(val: string) {
+        this.registrationCard.profile.lastName = val
+    }
+    setEmail(val: string) {
+        this.registrationCard.profile.email = val
+    }
     setLogin(val: string) {
-        this.acc.username = val
+        this.registrationCard.profile.login = val
+    }
+    setMobilePhone(val: string) {
+        this.registrationCard.profile.mobilePhone = val
     }
     setPassword(val: string) {
-        this.acc.password = val
+        this.registrationCard.credentials.password.value = val
     }
     setRepPassword(val: string) {
         this.repPassword = val
@@ -54,16 +81,21 @@ class SignUpPage extends React.Component<SignUpProps> {
     }
 
     async submit(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
-        if (this.acc.password !== this.repPassword)
+        if (this.registrationCard.credentials.password.value !== this.repPassword)
             return this.highlightNotMatch()
 
-        e.currentTarget.disabled = true
-        var data = await CreateQuery(this.acc)
+        //e.currentTarget.disabled = true
+        var data = await CreateQuery(this.registrationCard)
         if (data.status === 200) {
-            await LoginQuery(this.acc)
+            let acc: Account = {
+                username: this.registrationCard.profile.login,
+                password: this.registrationCard.credentials.password.value
+            }
+
+            await LoginQuery(acc);
             window.location.href = '/';
         } else {
-            e.currentTarget.disabled = false
+            //e.currentTarget.disabled = false
             var title = document.getElementById("undertitle")
             if (title)
                 title.innerText = "Ошибка создания аккаунта!"
@@ -73,8 +105,16 @@ class SignUpPage extends React.Component<SignUpProps> {
     render() {
         return <Box className={styles.login_page}>
             <Box className={styles.input_div}>
+                <Input name="login" placeholder="Введите имя" 
+                onInput={event => this.setFirstName(event.currentTarget.value)}/>
+                <Input name="login" placeholder="Введите фамилию" 
+                onInput={event => this.setLastName(event.currentTarget.value)}/>
+                <Input name="login" placeholder="Введите электронную почту" 
+                onInput={event => this.setEmail(event.currentTarget.value)}/>
                 <Input name="login" placeholder="Введите логин" 
                 onInput={event => this.setLogin(event.currentTarget.value)}/>
+                <Input name="login" placeholder="Введите телефон" 
+                onInput={event => this.setMobilePhone(event.currentTarget.value)}/>
                 <Input name="password" type="password" placeholder="Введите пароль"
                 onInput={event => this.setPassword(event.currentTarget.value)}/>
                 <Input name="rep-password" type="password" placeholder="Повторите пароль"

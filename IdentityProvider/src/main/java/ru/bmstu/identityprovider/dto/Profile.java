@@ -2,10 +2,12 @@ package ru.bmstu.identityprovider.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
+import lombok.ToString;
 import lombok.experimental.Accessors;
 
 @Data
 @Accessors(chain = true)
+@ToString
 public class Profile {
     @JsonProperty(value = "firstName")
     public String firstName;

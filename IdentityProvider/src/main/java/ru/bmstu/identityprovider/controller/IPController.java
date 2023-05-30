@@ -1,5 +1,7 @@
 package ru.bmstu.identityprovider.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -25,8 +27,8 @@ public class IPController {
     }
 
     @PostMapping(value = "/register")
-    public ResponseEntity register(@RequestBody RegisterRequest request) {
-        log.info("[IDENTITY PROVIDER]: registration request was caught.");
+    public ResponseEntity register(@RequestBody RegisterRequest request) throws JsonProcessingException {
+        log.info("[IDENTITY PROVIDER]: registration request={} was caught.", request);
 
         return new ResponseEntity(service.register(request));
     }
