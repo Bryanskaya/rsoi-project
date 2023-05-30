@@ -16,6 +16,7 @@ import ru.bmstu.gateway.config.ActionType;
 import ru.bmstu.gateway.dto.request.AuthRequest;
 import ru.bmstu.gateway.dto.request.CreateReservationRequest;
 import ru.bmstu.gateway.dto.request.RegisterRequest;
+import ru.bmstu.gateway.dto.response.RoleResponse;
 import ru.bmstu.gateway.dto.response.TokenResponse;
 import ru.bmstu.gateway.kafka.KafkaProducer;
 import ru.bmstu.gateway.service.GatewayService;
@@ -273,5 +274,20 @@ public class GatewayController {
                 ActionType.SYS_STATISTICS, null));
 
         return statisticsInfo;
+    }
+
+    @GetMapping(value = "/me/role", produces = "application/json")
+    public RoleResponse getUserRole(@RequestHeader(value = "Authorization", required = false) String bearerToken) {
+        log.info("[GATEWAY]: Request to get user's role (user={}) was caught.", tokenService.getUsername(bearerToken));
+        Date startDate = new Date();
+
+        tokenService.validateToken(bearerToken);
+
+        String role = tokenService.getRole(bearerToken);
+
+        producer.send(new LogInfoDTO(tokenService.getUsername(bearerToken), startDate, new Date(), ActionType.USER_ROLE, null));
+
+        return new RoleResponse()
+                .setRole(role);
     }
 }

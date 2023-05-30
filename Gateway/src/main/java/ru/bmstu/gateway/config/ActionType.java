@@ -6,6 +6,7 @@ public class ActionType {
     public static String ALL_HOTELS = "ALL_HOTELS";
     public static String HOTEL_IMAGE = "HOTEL_IMAGE";
     public static String RESERVATIONS_BY_USER = "RESERVATIONS_BY_USER";
+    public static String USER_ROLE = "USER_ROLE";
     public static String RESERVATIONS_BY_USERNAME = "RESERVATIONS_BY_USERNAME";
     public static String RESERVATION_BY_USERNAME_RESERVATIONUID = "RESERVATION_BY_USERNAME_RESERVATIONUID";
     public static String CREATE_RESERVATION = "CREATE_RESERVATION";
