@@ -2,12 +2,12 @@ import { Box } from "@chakra-ui/react";
 import GetMyReservations from "postAPI/likes/GetMyReservations";
 import React from "react";
 
-import styles from "./LikedRecipesPage.module.scss";
+import styles from "./ReservationsPage.module.scss";
 import ReservationMap from "components/ReservationMap/ReservationMap";
 
-interface LikedRecipesProps {}
+interface ReservationsProps {}
 
-const LikedRecipes: React.FC<LikedRecipesProps> = () => {
+const ReservationsPage: React.FC<ReservationsProps> = () => {
   return (
     <Box className={styles.main_box}>
       <ReservationMap getCall={GetMyReservations} />
@@ -15,4 +15,4 @@ const LikedRecipes: React.FC<LikedRecipesProps> = () => {
   );
 };
 
-export default LikedRecipes;
+export default ReservationsPage;

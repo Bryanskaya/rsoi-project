@@ -11,7 +11,7 @@ import AllHotelsPage from "pages/Recipe/AllHotels";
 // import AllHotelsPage from "pages/Recipe/AllHotels/AllHotelsPage";
 import UsersPage from "pages/Users/UsersPage";
 import AuthorRecipesPage from "pages/Recipe/AuthorRecipes";
-import LikedRecipesPage from "pages/Recipe/LikedRecipes";
+import LikedRecipesPage from "pages/Recipe/AuthorReservations";
 import CategoryPage from "pages/Category";
 
 import SearchContextProvider from "context/Search";
