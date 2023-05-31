@@ -1,4 +1,4 @@
-import { Box, HStack, Image, Link, Text, VStack } from "@chakra-ui/react";
+import { Box, HStack, Image, Text, VStack } from "@chakra-ui/react";
 import React from "react";
 
 import { Reservation as ReservationI } from "types/Reservation";
@@ -27,7 +27,7 @@ const ReservationCard: React.FC<ReservationProps> = (props) => {
   }
 
   async function submit(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
-    var data = await CancelReservation(props.reservationUid);
+    await CancelReservation(props.reservationUid);
     setStatus(statusItems['CANCELED']);
   }
 
@@ -52,11 +52,11 @@ const ReservationCard: React.FC<ReservationProps> = (props) => {
         <Box className={styles.description_box}>
             <Text>Выезд: {props.endDate}</Text>
         </Box>
-        { status == 'Оплачено' && 
+        { status === 'Оплачено' && 
         <Box className={styles.description_box}>
             <Text>Статус: { status }</Text>
         </Box> }
-        { status == 'Отменено' && 
+        { status === 'Отменено' && 
         <Box className={styles.description_box}>
             <Text>Статус: { status }</Text>
         </Box> }
@@ -67,7 +67,7 @@ const ReservationCard: React.FC<ReservationProps> = (props) => {
         </HStack>
         </VStack>
 
-        { (status == 'Оплачено') && 
+        { (status === 'Оплачено') && 
             <RoundButton type="submit" onClick={event => submit(event)}>
                 Отменить
             </RoundButton> 
