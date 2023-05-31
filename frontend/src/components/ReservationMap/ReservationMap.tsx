@@ -1,6 +1,6 @@
 import { Box } from "@chakra-ui/react";
 import React from "react";
-import RecipeCard from "../RecipeCard";
+import RecipeCard from "../HotelCard";
 import { AllReservationsResp } from "postAPI";
 
 import styles from "./ReservationMap.module.scss";
