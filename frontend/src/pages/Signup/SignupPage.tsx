@@ -3,7 +3,6 @@ import theme from "styles/extendTheme";
 
 import { Box, Link } from "@chakra-ui/react";
 import { NavigateFunction } from "react-router-dom";
-import { CookieSetOptions } from "universal-cookie";
 
 import { Account } from "types/Account";
 import { Create as CreateQuery } from "postAPI/accounts/Create";
@@ -17,12 +16,6 @@ import { RegistrationCard } from "types/RegistrationCard";
 
 type SignUpProps = {
     navigate: NavigateFunction
-    cookie: {
-        token?: string;
-        role?: string;
-        login?: string;
-    }
-    setCookie: (name: "token" | "role" | "login", value: any, options?: CookieSetOptions | undefined) => void
 }
 
 

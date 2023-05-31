@@ -7,7 +7,8 @@ import { BrowserRouter } from "react-router-dom";
 import Login from "pages/Login";
 import SignUp from "pages/Signup";
 import RecipeInfoPage from "pages/Recipe/RecipeInfo";
-import AllRecipesPage from "pages/Recipe/AllRecipes";
+import AllHotelsPage from "pages/Recipe/AllHotels";
+// import AllHotelsPage from "pages/Recipe/AllHotels/AllHotelsPage";
 import UsersPage from "pages/Users/UsersPage";
 import AuthorRecipesPage from "pages/Recipe/AuthorRecipes";
 import LikedRecipesPage from "pages/Recipe/LikedRecipes";
@@ -36,8 +37,8 @@ const Home: React.FC<HomeProps> = () => {
 function Routing() {
   return <BrowserRouter>
     <Routes>
-      <Route path="/" element={<AllRecipesPage/>}/>
-      <Route path="/me/likes" element={<LikedRecipesPage/>}/>
+      <Route path="/" element={<AllHotelsPage/>}/>
+      <Route path="/me/reservations" element={<LikedRecipesPage/>}/>
       <Route path="/me/recipes" element={<AuthorRecipesPage/>}/>
 
       <Route path="/accounts/:login/recipes" element={<AuthorRecipesPage/>}/>

@@ -1,22 +1,16 @@
 import { Box } from "@chakra-ui/react";
-import GetRecipes from "postAPI/likes/GetRecipes";
+import GetMyReservations from "postAPI/likes/GetMyReservations";
 import React from "react";
-import { useCookies } from "react-cookie";
-import { useParams } from "react-router-dom";
-import RecipeMap from "../../../components/RecipeMap/RecipeMap";
 
 import styles from "./LikedRecipesPage.module.scss";
+import ReservationMap from "components/ReservationMap/ReservationMap";
 
 interface LikedRecipesProps {}
 
-const LikedRecipes: React.FC<LikedRecipesProps> = (props) => {
-  let [cookie] = useCookies(["role", "login"]);
-  const params = useParams();
-  let login = params.login ? params.login : cookie.login;
-
+const LikedRecipes: React.FC<LikedRecipesProps> = () => {
   return (
     <Box className={styles.main_box}>
-      <RecipeMap getCall={() => GetRecipes(login)} />
+      <ReservationMap getCall={GetMyReservations} />
     </Box>
   );
 };

@@ -8,6 +8,8 @@ import FullLikeBox from "components/Boxes/FullLike";
 
 import styles from "./RecipeCard.module.scss";
 import GetImageUrl from "postAPI/likes/Get";
+import RoundBox from "components/Boxes/RoundBox/RoundBox";
+import RoundButton from "components/RoundButton/RoundButton";
 
 
 interface RecipeProps extends HotelI {}
@@ -52,6 +54,10 @@ const RecipeCard: React.FC<RecipeProps> = (props) => {
             <StarBox duration={props.stars} />
             <FullLikeBox price={props.price} />
           </HStack>
+
+          <RoundButton>
+            Забронировать
+          </RoundButton>
         </Box>
       </Box>
     </Link>

@@ -1,5 +1,4 @@
 import axiosBackend from "..";
-import { backUrl } from "..";
 
 interface resp {
     status: number
@@ -7,7 +6,7 @@ interface resp {
 }
 
 const GetImageUrl = async function(hotelUid: number): Promise<resp> {
-    const response = await axiosBackend.get(backUrl + `/hotels/${hotelUid}/image`);
+    const response = await axiosBackend.get(`/hotels/${hotelUid}/image`);
     return {
         status: response.status,
         content: response.data as string

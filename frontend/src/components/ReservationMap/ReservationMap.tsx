@@ -1,20 +1,21 @@
 import { Box } from "@chakra-ui/react";
 import React from "react";
 import RecipeCard from "../RecipeCard";
-import { AllHotelResp } from "postAPI"
+import { AllReservationsResp } from "postAPI";
 
-import styles from "./RecipeMap.module.scss";
+import styles from "./ReservationMap.module.scss";
+import ReservationCard from "components/ReservationCard/ReservationCard";
 
-interface RecipeBoxProps {
+interface ReservationBoxProps {
     searchQuery?: string
-    getCall: (title?: string) => Promise<AllHotelResp>
+    getCall: (title?: string) => Promise<AllReservationsResp>
 }
 
 type State = {
     postContent?: any
 }
 
-class RecipeMap extends React.Component<RecipeBoxProps, State> {
+class ReservationMap extends React.Component<ReservationBoxProps, State> {
     constructor(props) {
         super(props);
         this.state = {
@@ -25,7 +26,7 @@ class RecipeMap extends React.Component<RecipeBoxProps, State> {
     async getAll() {
         var data = await this.props.getCall(this.props.searchQuery)
         if (data.status === 200)
-            this.setState({postContent: data.content.items});
+            this.setState({postContent: data.content});
     }
 
     componentDidMount() {
@@ -41,10 +42,10 @@ class RecipeMap extends React.Component<RecipeBoxProps, State> {
     render() {
         return (
             <Box className={styles.map_box}>
-                {this.state.postContent.map(item => <RecipeCard {...item} key={item.id}/>)}
+                {this.state.postContent.map(item => <ReservationCard {...item} key={item.id}/>)}
             </Box>
         )
     }
 }
 
-export default React.memo(RecipeMap);
+export default React.memo(ReservationMap);

@@ -16,6 +16,15 @@ export const Login = async function (data: Account): Promise<resp> {
   if (response.status === 200) {
     localStorage.setItem("token", response.data.access_token);
     localStorage.setItem("username", data.username);
+
+    const responseRole = await axiosBackend
+      .get(`/me/role`);
+    if (responseRole.status === 200) {
+      localStorage.setItem("role", responseRole.data.role);
+    }
+    else {
+      localStorage.setItem("role", "");
+    }
   }
 
   return {

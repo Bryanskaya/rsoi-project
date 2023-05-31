@@ -3,6 +3,7 @@ import { Hotel } from "types/Hotel";
 import { Account } from "types/Account";
 import axios from "axios";
 import { HotelResponse } from "types/HotelResponse";
+import { Reservation } from "types/Reservation";
 
 export const backUrl = "http://localhost:8080/api/v1";
 
@@ -29,6 +30,11 @@ export default axiosBackend();
 export type AllHotelResp = {
     status: number,
     content: HotelResponse
+}
+
+export type AllReservationsResp = {
+    status: number,
+    content: Reservation[]
 }
 
 export type AllCategoriesResp = {

@@ -5,7 +5,7 @@ import styles from "../Navbar.module.scss";
 
 import AuthorIcon from "components/Icons/Author";
 import DownArrowIcon from "components/Icons/DownArrow";
-import FullLikeIcon from "components/Icons/FullLike";
+import HotelIcon from "components/Icons/Hotel";
 import RecipeIcon from "components/Icons/Recipes";
 import LogoutIcon from "components/Icons/Logout";
 
@@ -18,7 +18,7 @@ const AuthActions: React.FC<AuthActionsProps> = (props) => {
 
     return (
         <Box className={styles['user-act']}>
-            { expanded && <Link href="/me/likes"> <FullLikeIcon/> </Link> }
+            { expanded && <Link href="/me/reservations"> <HotelIcon/> </Link> }
             { expanded && <Link href="/me/recipes"> <RecipeIcon/> </Link> }
             { expanded && <Link onClick={props.logout}> <LogoutIcon/> </Link> }
 
