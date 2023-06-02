@@ -1,4 +1,4 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 import React from "react";
 
 import styles from "./Statistics.module.scss";
@@ -37,6 +37,10 @@ class StatisticsMap extends React.Component<StatisticsBoxProps, State> {
     render() {
         return (
             <Box className={styles.map_box}>
+                <Text className={styles.title_box}>
+                    Общие технические характеристики
+                </Text>
+
                 {this.state.avgServiceTime.map(item => <StatisticsAvgServiceTimeCard {...item} key={item.id}/>)}
             </Box>
         )
