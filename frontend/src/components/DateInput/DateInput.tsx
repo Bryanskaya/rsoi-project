@@ -15,7 +15,7 @@ import AddIcon from 'components/Icons/Add'
 import { DateReservation as DateReservationT } from 'types/DateReservation';
 import RoundButton from "components/RoundButton/RoundButton";
 
-import styles from "./InputIngredient.module.scss"
+import styles from "./DateInput.module.scss"
 import DateInputBox from 'components/DateInputBox/DateInputBox'
 
 
@@ -29,7 +29,7 @@ interface DateContextType {
 export const DateContext = React.createContext<DateContextType | undefined>(undefined);
 
 
-export default function IngredientInput(props) {
+export default function DateInput(props) {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [ startDate, setStartDate] = useState('');
   const [ endDate, setEndDate] = useState('');

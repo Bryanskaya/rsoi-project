@@ -5,7 +5,7 @@ import { InputProps as IProps } from "@chakra-ui/react";
 
 import ru from 'date-fns/locale/ru';
 import styles from './DateInputBox.module.scss';
-import { DateContext } from 'components/InputIngredient/InputIngredient';
+import { DateContext } from 'components/DateInput/DateInput';
 
 
 interface DateProps extends IProps {

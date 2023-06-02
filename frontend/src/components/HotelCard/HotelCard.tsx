@@ -1,4 +1,4 @@
-import { Box, HStack, Image, Link, Text, VStack } from "@chakra-ui/react";
+import { Box, HStack, Image, Text, VStack } from "@chakra-ui/react";
 import React from "react";
 
 import { Hotel as HotelI } from "types/Hotel";
@@ -9,7 +9,7 @@ import FullLikeBox from "components/Boxes/FullLike";
 import styles from "./HotelCard.module.scss";
 import GetImageUrl from "postAPI/likes/Get";
 
-import IngredientModel from "components/InputIngredient";
+import IngredientModel from "components/DateInput";
 import {DateReservation as DateReservationT} from "types/DateReservation";
 import {ReservationRequest as ReservationRequestT} from "types/ReservationRequest";
 import PostReservation from "postAPI/likes/Post";

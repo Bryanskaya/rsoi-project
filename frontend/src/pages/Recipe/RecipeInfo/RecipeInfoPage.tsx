@@ -25,7 +25,7 @@ import FullLike from "components/Icons/FullLike";
 import AddIcon from "components/Icons/Add";
 
 import Ingredient from "components/IngredientBox";
-import IngredientModel from "components/InputIngredient";
+import IngredientModel from "components/DateInput";
 import StarBox from "components/Boxes/Star";
 import FullLikeBox from "components/Boxes/FullLike";
 import PortionBox from "components/Boxes/Portion";
