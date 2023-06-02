@@ -39,7 +39,7 @@ function Routing() {
     <Routes>
       <Route path="/" element={<AllHotelsPage/>}/>
       <Route path="/me/reservations" element={<LikedRecipesPage/>}/>
-      <Route path="/me/recipes" element={<AuthorRecipesPage/>}/>
+      <Route path="/statistics" element={<AuthorRecipesPage/>}/>
 
       <Route path="/accounts/:login/recipes" element={<AuthorRecipesPage/>}/>
       <Route path="/accounts/:login/likes" element={<LikedRecipesPage/>}/>

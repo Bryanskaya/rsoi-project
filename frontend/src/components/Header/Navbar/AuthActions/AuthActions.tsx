@@ -19,7 +19,7 @@ const AuthActions: React.FC<AuthActionsProps> = (props) => {
     return (
         <Box className={styles['user-act']}>
             { expanded && <Link href="/me/reservations"> <HotelIcon/> </Link> }
-            { expanded && <Link href="/me/recipes"> <RecipeIcon/> </Link> }
+            { expanded && <Link href="/statistics"> <RecipeIcon/> </Link> }
             { expanded && <Link onClick={props.logout}> <LogoutIcon/> </Link> }
 
             { (!expanded) && <Box> <AuthorIcon/> </Box> }
