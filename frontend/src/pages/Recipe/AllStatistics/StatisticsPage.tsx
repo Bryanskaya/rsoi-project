@@ -1,20 +1,18 @@
 import { Box } from "@chakra-ui/react";
 import React from "react";
 
-import styles from "./AuthorRecipesPage.module.scss";
+import styles from "./StatisticsPage.module.scss";
 import GetAvgServiceTime from "postAPI/statistics/GetAvgServiceTime";
 import StatisticsMap from "components/StatisticsMap/StatisticsMap";
 
-interface AuthorRecipesProps {}
+interface StatisticsProps {}
 
-const AuthorRecipes: React.FC<AuthorRecipesProps> = () => {
-  console.log("authorrecipes");
+const StatisticsPage: React.FC<StatisticsProps> = () => {
   return (
     <Box className={styles.main_box}>
       <StatisticsMap getCall={GetAvgServiceTime} />
-      {/* <RecipeMap getCall={() => GetRecipes(login)} /> */}
     </Box>
   );
 };
 
-export default AuthorRecipes;
+export default StatisticsPage;

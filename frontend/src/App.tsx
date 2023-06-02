@@ -10,7 +10,7 @@ import RecipeInfoPage from "pages/Recipe/RecipeInfo";
 import AllHotelsPage from "pages/Recipe/AllHotels";
 // import AllHotelsPage from "pages/Recipe/AllHotels/AllHotelsPage";
 import UsersPage from "pages/Users/UsersPage";
-import AuthorRecipesPage from "pages/Recipe/AuthorRecipes";
+import StatisticsPage from "pages/Recipe/AllStatistics";
 import LikedRecipesPage from "pages/Recipe/AuthorReservations";
 import CategoryPage from "pages/Category";
 
@@ -39,9 +39,9 @@ function Routing() {
     <Routes>
       <Route path="/" element={<AllHotelsPage/>}/>
       <Route path="/me/reservations" element={<LikedRecipesPage/>}/>
-      <Route path="/statistics" element={<AuthorRecipesPage/>}/>
+      <Route path="/statistics" element={<StatisticsPage/>}/>
 
-      <Route path="/accounts/:login/recipes" element={<AuthorRecipesPage/>}/>
+      <Route path="/accounts/:login/recipes" element={<StatisticsPage/>}/>
       <Route path="/accounts/:login/likes" element={<LikedRecipesPage/>}/>
 
       <Route path="/authorize" element={<Login/>}/>
