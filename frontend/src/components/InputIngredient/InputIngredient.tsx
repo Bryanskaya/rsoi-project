@@ -1,4 +1,5 @@
 import { Box, Button, useDisclosure } from '@chakra-ui/react'
+import { useState } from 'react';
 import {
   Modal,
   ModalOverlay,
@@ -11,40 +12,56 @@ import {
 import React from 'react'
 
 import AddIcon from 'components/Icons/Add'
-import Input from 'components/Input'
-import { Ingredient as IngredientT } from 'types/Ingredient'
+import { DateReservation as DateReservationT } from 'types/DateReservation';
+import RoundButton from "components/RoundButton/RoundButton";
 
 import styles from "./InputIngredient.module.scss"
+import DateInputBox from 'components/DateInputBox/DateInputBox'
 
-export default function IngredientInput(propos) {
+
+interface DateContextType {
+  startDate: string,
+  setStartDate: React.Dispatch<React.SetStateAction<string>>,
+  endDate: string,
+  setEndDate: React.Dispatch<React.SetStateAction<string>>
+}
+
+export const DateContext = React.createContext<DateContextType | undefined>(undefined);
+
+
+export default function IngredientInput(props) {
   const { isOpen, onOpen, onClose } = useDisclosure()
-  var data: IngredientT = { title: '', amount: '' }
+  const [ startDate, setStartDate] = useState('');
+  const [ endDate, setEndDate] = useState('');
+
+  var data: DateReservationT = { startDate: new Date(), endDate: new Date() }
 
   async function put() { 
-    await propos.putCallback(data)
+    data.startDate = new Date(startDate);
+    data.endDate = new Date(endDate);
+    await props.putCallback(data)
+    
     onClose()
   }
 
   return (
     <>
-      <Button className={styles.add_btn} onClick={onOpen}>
-        <Box> <AddIcon /> </Box>
-      </Button>
+      <RoundButton onClick={onOpen}>
+          Забронировать
+      </RoundButton>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent className={styles.dark_bg}>
-          <ModalHeader>Новый ингредиент</ModalHeader>
+          <ModalHeader>Выберете даты въезда и выезда</ModalHeader>
           <ModalCloseButton />
           <ModalBody className={styles.model_body}>
             <Box>
-              <Input placeholder='Введите ингредиент'
-                onInput={(e) => {data.title = e.currentTarget.value}}
-              />
-              <Input placeholder='Введите меру'
-                onInput={(e) => {data.amount = e.currentTarget.value}}
-              />
+              <DateContext.Provider value={{ startDate, setStartDate, endDate, setEndDate }}>
+                <DateInputBox />
+              </DateContext.Provider>
             </Box>
+
             <Button className={styles.ready_btn} onClick={put}>
               <AddIcon className={styles.img_btn} />
             </Button>

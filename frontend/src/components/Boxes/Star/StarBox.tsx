@@ -12,17 +12,16 @@ interface InputProps extends IProps {
 }
 
 const StarBox: React.FC<InputProps> = (props) => {
+    var stringDuration = ""
 
-      var stringDuration = ""
-
-        if (!props.duration)
-            stringDuration = "---"
-        else if (props.duration == 1)
-            stringDuration += props.duration + " звезда"
-        else if (props.duration > 1 && props.duration < 5)
-            stringDuration += props.duration + " звезды"
-        else
-            stringDuration += props.duration + " звёзд"
+    if (!props.duration)
+        stringDuration = "---"
+    else if (props.duration == 1)
+        stringDuration += props.duration + " звезда"
+    else if (props.duration > 1 && props.duration < 5)
+        stringDuration += props.duration + " звезды"
+    else
+        stringDuration += props.duration + " звёзд"
 
     return (
     <Box className={styles.round_box_tiny}> 
