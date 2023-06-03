@@ -14,12 +14,14 @@ import ru.bmstu.reservationapp.controller.converter.ResponseConverter;
 import ru.bmstu.reservationapp.dto.HotelResponse;
 import ru.bmstu.reservationapp.dto.LogInfoDTO;
 import ru.bmstu.reservationapp.dto.PaginationResponse;
+import ru.bmstu.reservationapp.dto.PopularHotelDTO;
 import ru.bmstu.reservationapp.kafka.KafkaProducer;
 import ru.bmstu.reservationapp.service.HotelService;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
+import java.util.List;
 import java.util.UUID;
 import java.util.Date;
 
@@ -149,5 +151,19 @@ public class HotelController {
         return ResponseEntity
                 .status(httpStatus)
                 .body(price);
+    }
+
+    @GetMapping(value = "/popular", produces = "application/json")
+    public ResponseEntity<?> getPopularHotels() {
+        log.info("[HOTEL]: Request to get 3 most popular hotels was caught.");
+        Date start = new Date();
+
+        List<PopularHotelDTO> hotelArr = hotelService.getPopularHotels();
+
+        producer.send(new LogInfoDTO(null, start, new Date(), ActionType.MICROSERVICE_MOST_POPULAR_HOTELS, null));
+
+        return ResponseEntity
+                .ok()
+                .body(hotelArr);
     }
 }

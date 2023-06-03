@@ -11,7 +11,7 @@ import UserHeader from "./User";
 export const HeaderRouter: React.FC<{}> = () => {
     return <BrowserRouter>
         <Routes>
-            <Route path="/" element={<SearchHeader title="Все отели"/>}/>
+            <Route path="/" element={<Header title="Все отели"/>}/>
             <Route path="/users" element={<SearchHeader title="Все пользователи"/>}/>
             <Route path="/me/reservations" element={<Header subtitle="Бронирования" title="Мои" />}/>
             <Route path="/statistics" element={<Header subtitle="Общая" title="Статистика" />}/>

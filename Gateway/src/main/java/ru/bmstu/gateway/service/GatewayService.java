@@ -186,5 +186,9 @@ public class GatewayService {
     public QueryServiceAvg[] getQueryAvgTime() {
         return statisticsRepository.getQueryAvgTime();
     }
+
+    public PopularHotelResponse[] getPopularHotels() {
+        return hotelRepository.getPopularHotels();
+    }
 }
 

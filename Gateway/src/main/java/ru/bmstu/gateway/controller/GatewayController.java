@@ -290,4 +290,24 @@ public class GatewayController {
         return new RoleResponse()
                 .setRole(role);
     }
+
+    @GetMapping(value = "/hotels/popular", produces = "application/json")
+    public ResponseEntity<?> getPopularHotels(@RequestHeader(value = "Authorization", required = false) String bearerToken) {
+        log.info("[GATEWAY]: Request to get 3 most popular hotels was caught.");
+        Date startDate = new Date();
+
+        tokenService.validateToken(bearerToken);
+
+        if (!Objects.equals(tokenService.getRole(bearerToken).toLowerCase(), Role.ADMIN.name().toLowerCase()))
+            throw new RolePermissionException();
+
+        ResponseEntity<?> hotelArr = ResponseEntity
+                .ok()
+                .body(gatewayService.getPopularHotels());
+
+        producer.send(new LogInfoDTO(tokenService.getUsername(bearerToken), startDate, new Date(),
+                ActionType.SYS_STATISTICS, null));
+
+        return hotelArr;
+    }
 }

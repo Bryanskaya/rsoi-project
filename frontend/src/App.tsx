@@ -8,7 +8,6 @@ import Login from "pages/Login";
 import SignUp from "pages/Signup";
 import RecipeInfoPage from "pages/Recipe/RecipeInfo";
 import AllHotelsPage from "pages/Recipe/AllHotels";
-// import AllHotelsPage from "pages/Recipe/AllHotels/AllHotelsPage";
 import UsersPage from "pages/Users/UsersPage";
 import StatisticsPage from "pages/Recipe/AllStatistics";
 import LikedRecipesPage from "pages/Recipe/AuthorReservations";

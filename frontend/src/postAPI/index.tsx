@@ -5,6 +5,8 @@ import axios from "axios";
 import { HotelResponse } from "types/HotelResponse";
 import { Reservation } from "types/Reservation";
 import { AvgServiceTime } from "types/AvgServiceTime";
+import { AvgQueryServiceTime } from "types/AvgQueryServiceTime";
+import { PopularHotel } from "types/PopularHotel";
 
 export const backUrl = "http://localhost:8080/api/v1";
 
@@ -41,6 +43,16 @@ export type AllReservationsResp = {
 export type AllAvgServiceTimeResp = {
     status: number,
     content: AvgServiceTime[]
+}
+
+export type AllAvgQueryTimeResp = {
+    status: number,
+    content: AvgQueryServiceTime[]
+}
+
+export type PopularHotelsResp = {
+    status: number,
+    content: PopularHotel[]
 }
 
 export type AllCategoriesResp = {
