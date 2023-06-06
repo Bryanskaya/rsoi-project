@@ -19,6 +19,25 @@ reservation:
       name: bryanskaya/reservationapp
       tag: latest
 
+identityprovider:
+  service:
+    port: 8040
+    image:
+      name: bryanskaya/identityprovider
+      tag: latest
+
+statistics:
+  service:
+    port: 8090
+    image:
+      name: bryanskaya/statisticsapp
+      ta:
+  service:
+    port: 3000
+    image:
+      name: bryanskaya/frontend
+      tag: latest
+
 gateway:
   service:
     port: 8080

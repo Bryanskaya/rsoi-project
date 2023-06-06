@@ -1,0 +1,23 @@
+server:
+  port: 8090
+
+spring:
+  cloud:
+    function:
+      definition: consumer
+    stream:
+      kafka:
+        binder:
+          autoCreateTopics: true
+          brokers: kafka:9092
+      bindings:
+        consumer-in-0:
+          group: dev_statistics_consumer
+          destination: dev.rsoi.statistics.event
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/master.yaml
+  datasource:
+    url: jdbc:postgresql://postgres-chart-service:5432/statistics
+    username: program
+    password: test

@@ -29,4 +29,13 @@ dependencies:
     alias: reservation
   - name: service-chart
     version: 1.0.0
+    alias: identityprovider
+  - name: service-chart
+    version: 1.0.0
+    alias: statistics
+  - name: service-chart
+    version: 1.0.0
+    alias: frontend
+  - name: service-chart
+    version: 1.0.0
     alias: gateway

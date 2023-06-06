@@ -3,6 +3,8 @@ host:
     hotel: "reservation-service"
     loyalty: "loyalty-service"
     payment: "payment-service"
+    identityProvider: "identityprovider-service"
+    statistics: "statistics-service"
 
 path:
   service:
@@ -10,16 +12,40 @@ path:
     loyalty: "api/v1/loyalty"
     reservation: "api/v1/reservations"
     payment: "api/v1/payments"
+    identityProvider: "api/v1/identityprovider"
+    statistics: "api/v1/statistics"
 
 port:
   service:
     hotel: "8070"
     loyalty: "8050"
     payment: "8060"
+    identityProvider: "8040"
+    statistics: "8090"
 
 const:
   jwt:
     token:
       prefix: "Bearer "
-    modulus: "nlY3eb4Wxl1Zlb2_eTpbwabiNm1oyaxAzl1BcgHIR_piwxkd02nHDgbFX3SogoAcsEaGXgI7e4j-JwjfHFN74gpdWWcaUrRz9Utt3Dzl-8gVBG2a3_1fgsSgi5ArF5OTYpsFEvQWNYzu6T-pH9EHxNElbc9Ak3rQKIbPqUIGowMVnpyefuZOgsPN6AJ9zuIKIu5p-3Hi2dRPlZmJwZPu3ZpoDsY4HhdrqKuujBf5X0zw4NVugaYkUKUUQc9t5wZfId1kwPpapK-9roOIcvv1tKCB4Z5SLMB9cvgMY4RuWc3NQ_DrQCBc1KYOcmL54Tfwn7vUuVq3SYXYQF3iZZvdOw"
+    modulus: "qir1qoEh1hztZJZnnx-h_ifv1eZFx8Hzw9DWBH_YhRqM2IlkT2GS7SgPs_jTw7Ux7n773JNdBStmlMKY8vhTrCWPEeRSRulAg8cNLEmBQZF2ptLvR8dflVj33AQf2b9u930PmL-z00ZkfD04i4hGO6pJSLIh8G_pYPhe-lsALwxb-KBfTYNXbB7frZ5DueISPeC622Q-vM52YyKxOuJafRkHp4MgDzmonvyOgGBH-Rpk6tHya1KK9t9m9ByytcV-rVPMSEf4xr6CAuKK-sydoxwjgZlhvAwmH4KEprkK6_jk-owerCyVKqHEXD9iVcrSKh5wFt7w_zEY15i-Xp5oCQ"
     exponent: "AQAB"
+
+spring:
+  cloud:
+    function:
+      definition: producer
+    stream:
+      kafka:
+        binder:
+          brokers: kafka:9092
+          auto-add-partitions: true
+          auto-create-topics: true
+          producer-properties:
+            allow:
+              auto:
+                create:
+                  topics: true
+      bindings:
+        producer-out-0:
+          group: dev_gateway_producer
+          destination: dev.rsoi.statistics.event
